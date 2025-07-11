@@ -1,0 +1,30 @@
+[14:16:44.462] Running build in Washington, D.C., USA (East) – iad1
+[14:16:44.462] Build machine configuration: 4 cores, 8 GB
+[14:16:44.475] Cloning github.com/artouc/taxonom (Branch: main, Commit: 2efee81)
+[14:16:44.575] Previous build caches not available
+[14:16:44.922] Cloning completed: 447.000ms
+[14:16:45.219] Running "vercel build"
+[14:16:45.671] Vercel CLI 44.3.0
+[14:16:46.250] Warning: Detected "engines": { "node": ">=16" } in your `package.json` that will automatically upgrade when a new major Node.js Version is released. Learn More: http://vercel.link/node-version
+[14:16:46.257] Installing dependencies...
+[14:16:49.695] 
+[14:16:49.695] added 187 packages in 3s
+[14:16:49.696] 
+[14:16:49.696] 43 packages are looking for funding
+[14:16:49.696]   run `npm fund` for details
+[14:16:49.736] Running "npm run build"
+[14:16:49.934] 
+[14:16:49.935] > taxonom-playground@0.1.0 build
+[14:16:49.935] > vue-tsc && vite build
+[14:16:49.935] 
+[14:16:51.722] src/components/TaxonomDemo.vue(3,45): error TS2307: Cannot find module '@osaxyz/taxonom' or its corresponding type declarations.
+[14:16:51.736] npm error Lifecycle script `build` failed with error:
+[14:16:51.736] npm error code 2
+[14:16:51.736] npm error path /vercel/path0/playground
+[14:16:51.736] npm error workspace taxonom-playground@0.1.0
+[14:16:51.736] npm error location /vercel/path0/playground
+[14:16:51.736] npm error command failed
+[14:16:51.736] npm error command sh -c vue-tsc && vite build
+[14:16:51.744] Error: Command "npm run build" exited with 2
+[14:16:52.720] 
+[14:16:55.448] Exiting build container

@@ -308,6 +308,7 @@ MIT License - 詳細は [LICENSE](LICENSE) ファイルを参照
 
 - [NPM: @osaxyz/taxonom](https://www.npmjs.com/package/@osaxyz/taxonom)
 - [NPM: @osaxyz/taxonom-style](https://www.npmjs.com/package/@osaxyz/taxonom-style)
+- [ライブデモ](https://taxonom.vercel.app)
 - [highlight.js](https://highlightjs.org/)
 
 ---
