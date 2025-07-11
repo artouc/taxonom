@@ -1,6 +1,6 @@
 {
     "name": "@osaxyz/taxonom",
-    "version": "0.2.4",
+    "version": "0.2.5",
     "type": "module",
     "description": "高速なマークダウンパーサー for Vue.js",
     "main": "dist/index.esm.js",
@@ -31,7 +31,7 @@
         "nuxt",
         "headless"
     ],
-    "author": "大内あら生 (Ouchi Arata) <noreply@osaxyz.com>",
+    "author": "大内あら生 (Ouchi Arata) <support@osa.xyz>",
     "license": "SEE LICENSE IN LICENSE",
     "repository": {
         "type": "git",

@@ -1,6 +1,6 @@
 {
     "name": "@osaxyz/taxonom-style",
-    "version": "0.2.4",
+    "version": "0.2.5",
     "description": "デフォルトスタイル for @osaxyz/taxonom",
     "main": "dist/index.css",
     "exports": {
@@ -21,7 +21,7 @@
         "taxonom",
         "markdown"
     ],
-    "author": "大内あら生 (Ouchi Arata) <noreply@osaxyz.com>",
+    "author": "大内あら生 (Ouchi Arata) <support@osa.xyz>",
     "license": "SEE LICENSE IN LICENSE",
     "repository": {
         "type": "git",
@@ -36,7 +36,7 @@
         "sass": "^1.69.5"
     },
     "peerDependencies": {
-        "@osaxyz/taxonom": "^0.2.4"
+        "@osaxyz/taxonom": "^0.2.5"
     },
     "engines": {
         "node": ">=16"
