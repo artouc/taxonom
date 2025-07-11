@@ -1,6 +1,6 @@
 {
     "name": "@osaxyz/taxonom-style",
-    "version": "0.2.3",
+    "version": "0.2.4",
     "description": "デフォルトスタイル for @osaxyz/taxonom",
     "main": "dist/index.css",
     "exports": {
@@ -36,7 +36,7 @@
         "sass": "^1.69.5"
     },
     "peerDependencies": {
-        "@osaxyz/taxonom": "^0.2.3"
+        "@osaxyz/taxonom": "^0.2.4"
     },
     "engines": {
         "node": ">=16"
