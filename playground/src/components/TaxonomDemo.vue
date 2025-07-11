@@ -166,13 +166,13 @@ const user: User = {
                 placeholder="ここにマークダウンを入力してください..."
             )
             
-        .c-editor
-            h3.c-editor__title プレビュー
-            .c-editor__preview(v-html="parsed_html")
             
         .c-editor
             h3.c-editor__title 生成されたHTML
             pre.c-editor__code(v-html="formatted_html")
+        .c-editor
+            h3.c-editor__title プレビュー
+            .c-editor__preview(v-html="parsed_html")
 </template>
 
 <style scoped lang="sass">
