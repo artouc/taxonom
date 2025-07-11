@@ -14,7 +14,8 @@
         "dev:style": "npm run dev --workspace=taxonom-style",
         "test": "npm run test --workspaces --if-present",
         "typecheck": "npm run typecheck --workspaces --if-present",
-        "clean": "rm -rf */dist */node_modules node_modules",
+        "clean": "rm -rf */dist",
+        "clean:full": "rm -rf */dist */node_modules node_modules",
         "lint": "echo 'No linting configured'"
     },
     "devDependencies": {

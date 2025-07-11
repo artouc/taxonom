@@ -27,7 +27,8 @@ show_help() {
     echo "  dev:style       taxonom-style パッケージの開発モード"
     echo "  test            全パッケージのテストを実行"
     echo "  typecheck       型チェックを実行"
-    echo "  clean           ビルド成果物を削除"
+    echo "  clean           ビルド成果物を削除（distのみ）"
+    echo "  clean:full      ビルド成果物と依存関係を完全削除"
     echo "  help            このヘルプを表示"
     echo ""
 }
@@ -107,6 +108,21 @@ clean() {
     echo -e "${GREEN}✅ クリーンアップ完了${NC}"
 }
 
+# 完全クリーンアップ
+clean_full() {
+    echo -e "${YELLOW}🧹 ビルド成果物と依存関係を完全削除しています...${NC}"
+    echo -e "${RED}⚠️  注意: node_modulesも削除されます。再インストールが必要になります。${NC}"
+    read -p "続行しますか？ [y/N]: " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        npm run clean:full
+        echo -e "${GREEN}✅ 完全クリーンアップ完了${NC}"
+        echo -e "${YELLOW}💡 次回開発時は ./scripts/run.sh setup を実行してください${NC}"
+    else
+        echo -e "${GREEN}キャンセルしました${NC}"
+    fi
+}
+
 # メイン処理
 case "${1:-help}" in
     "setup")
@@ -135,6 +151,9 @@ case "${1:-help}" in
         ;;
     "clean")
         clean
+        ;;
+    "clean:full")
+        clean_full
         ;;
     "help"|*)
         show_help
