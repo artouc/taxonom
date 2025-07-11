@@ -576,7 +576,7 @@ MIT License
 
 - [GitHub Repository](https://github.com/artouc/taxonom)
 - [NPM Package](https://www.npmjs.com/package/@osaxyz/taxonom)
-- [Demo & Playground](https://taxonom.vercel.app)
+- [Demo & Playground](https://taxonom.osa.xyz)
 
 ---
 

@@ -4,7 +4,7 @@
 
 ### 1. Vercel プロジェクト設定
 
-Vercel ダッシュボードで以下の設定を行ってください：
+Vercel ダッシュボードで以下の設定を行ってください（目標ドメイン: https://taxonom.osa.xyz）：
 
 #### Framework Preset
 - **Framework**: Vite
@@ -52,11 +52,27 @@ vercel --prod
 
 ### 4. カスタムドメイン設定
 
+#### Vercel ダッシュボード（推奨）
+
+1. Vercel プロジェクトページの「Domains」タブへ移動
+2. 「Add Domain」をクリック
+3. `taxonom.osa.xyz` を入力
+4. DNS設定でCNAMEレコードを設定:
+   ```
+   taxonom  CNAME  cname.vercel-dns.com
+   ```
+
+#### Vercel CLI
+
 ```bash
-# Vercel CLI でドメイン設定
-vercel domains add taxonom.yourdomain.com
-vercel domains assign taxonom.yourdomain.com
+# Vercel CLI でカスタムドメイン設定
+vercel domains add taxonom.osa.xyz
+vercel alias set https://taxonom-xxxx.vercel.app taxonom.osa.xyz
 ```
+
+#### SSL証明書
+
+Vercelが自動的にSSL証明書を発行し、HTTPSでアクセス可能になります。
 
 ## その他のプラットフォーム
 

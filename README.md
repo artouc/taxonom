@@ -47,7 +47,7 @@ npm install @osaxyz/taxonom-style
 - data-taxonom属性専用設計
 
 ### 🎮 [playground](./playground/)
-Vue.js デモアプリケーション - [ライブデモ](https://taxonom.vercel.app)
+Vue.js デモアプリケーション - [ライブデモ](https://taxonom.osa.xyz)
 
 ```bash
 cd playground && npm install && npm run dev
@@ -310,7 +310,7 @@ MIT License - 詳細は [LICENSE](LICENSE) ファイルを参照
 
 - [NPM: @osaxyz/taxonom](https://www.npmjs.com/package/@osaxyz/taxonom)
 - [NPM: @osaxyz/taxonom-style](https://www.npmjs.com/package/@osaxyz/taxonom-style)
-- [ライブデモ](https://taxonom.vercel.app)
+- [ライブデモ](https://taxonom.osa.xyz)
 - [highlight.js](https://highlightjs.org/)
 
 ---

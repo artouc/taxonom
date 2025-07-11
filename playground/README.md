@@ -235,7 +235,7 @@ MIT License
 - [本体リポジトリ](https://github.com/artouc/taxonom)
 - [@osaxyz/taxonom](https://www.npmjs.com/package/@osaxyz/taxonom)
 - [@osaxyz/taxonom-style](https://www.npmjs.com/package/@osaxyz/taxonom-style)
-- [ライブデモ](https://taxonom.vercel.app)
+- [ライブデモ](https://taxonom.osa.xyz)
 
 ---
 
