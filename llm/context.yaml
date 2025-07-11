@@ -5,7 +5,7 @@ project_info:
     name: "Taxonom"
     description: "Vue.js向け高速マークダウンパーサー（ヘッドレス設計）"
     type: "モノレポ"
-    current_version: "0.2.0"
+    current_version: "0.2.1"
     
 reference_files:
     critical_priority:
@@ -15,9 +15,12 @@ reference_files:
         - file: "BLUEPRINT.md"
           importance: "critical"
           description: "プロジェクトの仕様と要件定義"
-        - file: "llm/history/20250711140417_development-history.yaml"
+        - file: "llm/history/20250711144442_documentation-release-history.yaml"
           importance: "critical"
-          description: "最新の開発履歴（highlight.js統合・NPM公開完了・v0.2.0）"
+          description: "最新の開発履歴（ドキュメント改善・プロダクション対応・v0.2.1）"
+        - file: "llm/history/20250711140417_development-history.yaml"
+          importance: "high"
+          description: "前回の開発履歴（highlight.js統合・NPM公開完了・v0.2.0）"
         - file: "llm/history/20250711132549_style-package-history.yaml"
           importance: "high"
           description: "スタイルパッケージ化完了履歴"
@@ -140,4 +143,4 @@ pending_features:
         - "パフォーマンス最適化"
         - "プラグインシステム"
 
-current_status: "v0.2.0 NPM公開完了！highlight.js統合によりシンタックスハイライト対応。@osaxyz/taxonom@0.2.0と@osaxyz/taxonom-style@0.2.0がNPMで利用可能。GitHub Darkテーマでコードブロックが美しく表示される。次はテーブル機能やパフォーマンス最適化のフェーズ。"
+current_status: "v0.2.1 プロダクション対応完了！ドキュメント品質大幅向上、Vercelデプロイ完全対応、taxonom.osa.xyz設定完了。@osaxyz/taxonom@0.2.1と@osaxyz/taxonom-style@0.2.1がNPMで利用可能。企業レベルのドキュメント・デプロイ対応により本格運用準備完了。次はテーブル機能実装フェーズ。"
