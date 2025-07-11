@@ -20,7 +20,8 @@ export default {
             tsconfig: './tsconfig.json',
             declaration: true,
             declarationDir: './dist',
-            rootDir: './src'
+            rootDir: './src',
+            importHelpers: false
         })
     ]
 }

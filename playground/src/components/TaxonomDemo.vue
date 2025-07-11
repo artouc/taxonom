@@ -11,7 +11,7 @@ const markdown_input = ref(`# Taxonom デモ
 
 - **見出し** (H1〜H6)
 - **太字** と *斜体*
-- \`インラインコード\`
+- \`Inline Code\`
 - 水平線
 
 ---
@@ -34,7 +34,8 @@ const config = ref<TaxonomConfig>({
     hr: 'hr',
     bold: 'strong',
     italic: 'em',
-    code: 'code'
+    code: 'code',
+    codeBlock: 'pre'
 })
 
 const show_config = ref(true)
@@ -73,7 +74,8 @@ const resetConfig = (): void => {
         hr: 'hr',
         bold: 'strong',
         italic: 'em',
-        code: 'code'
+        code: 'code',
+        codeBlock: 'pre'
     }
 }
 
@@ -93,7 +95,32 @@ const loadSample = (): void => {
 ### テキスト装飾
 - **太字テキスト**
 - *斜体テキスト*
-- \`インラインコード\`
+- \`Inline Code\`
+
+### コードブロック
+
+\`\`\`javascript
+function greet(name) {
+    console.log('Hello, ' + name + '!');
+    return 'Welcome to Taxonom';
+}
+
+greet('Vue.js');
+\`\`\`
+
+\`\`\`typescript
+interface User {
+    id: number;
+    name: string;
+    email: string;
+}
+
+const user: User = {
+    id: 1,
+    name: 'Taxonom User',
+    email: 'user@example.com'
+};
+\`\`\`
 
 ### 水平線
 ---
@@ -101,7 +128,7 @@ const loadSample = (): void => {
 ### 複雑な例
 
 **太字の中に*斜体*を含む**例や、\`console.log('Hello World')\`のような
-コードも正しく処理されます。`
+インラインコードとコードブロックを組み合わせた表現も可能です。`
 }
 </script>
 
@@ -150,6 +177,7 @@ const loadSample = (): void => {
 
 <style scoped lang="sass">
 @use "@osaxyz/universtyle" as osa
+@use "@osaxyz/mediaquery" as *
 
 .p-demo
     &__controls
@@ -161,7 +189,7 @@ const loadSample = (): void => {
     &__editor
         display: grid
         grid-template-columns: 1fr 1fr 1fr
-        gap: osa.fibo(2)
+        gap: osa.fibo(0)
         
         @media (max-width: 1024px)
             grid-template-columns: 1fr
@@ -234,6 +262,10 @@ const loadSample = (): void => {
     display: flex
     flex-direction: column
     min-height: 1000px
+    @include mq(iPadPro)
+        min-height: 500px
+    @include mq(iPad)
+        min-height: 300px
         
     &__title
         margin: 0
@@ -265,48 +297,85 @@ const loadSample = (): void => {
         line-height: 1.6
         resize: vertical
         
-        // プレビュー内のスタイル
-        :deep(h2)
+        // プレビュー内のスタイル（データ属性セレクター）
+        :deep([data-taxonom-h1])
+            font-size: osa.harmonic(3)
+            margin-top: osa.fibo(2)
+            margin-bottom: osa.fibo(1)
+            color: var(--color-gray-900, #111827)
+            border-bottom: 2px solid var(--color-gray-300, #d1d5db)
+            
+        :deep([data-taxonom-h2])
             font-size: osa.harmonic(2)
             margin-top: osa.fibo(2)
             margin-bottom: osa.fibo(1)
             color: var(--color-gray-900, #111827)
             
-        :deep(h3)
+        :deep([data-taxonom-h3])
             font-size: osa.harmonic(1)
             margin-top: osa.fibo(2)
             margin-bottom: osa.fibo(1)
             color: var(--color-gray-800, #1f2937)
             
-        :deep(h4)
+        :deep([data-taxonom-h4])
             font-size: osa.harmonic(0)
             margin-top: osa.fibo(1)
             margin-bottom: osa.fibo(0)
             color: var(--color-gray-800, #1f2937)
             
-        :deep(p)
+        :deep([data-taxonom-h5])
+            font-size: osa.harmonic(-1)
+            margin-top: osa.fibo(1)
+            margin-bottom: osa.fibo(0)
+            color: var(--color-gray-800, #1f2937)
+            
+        :deep([data-taxonom-h6])
+            font-size: osa.harmonic(-1)
+            margin-top: osa.fibo(1)
+            margin-bottom: osa.fibo(0)
+            color: var(--color-gray-800, #1f2937)
+            
+        :deep([data-taxonom-p])
             margin-top: osa.fibo(1)
             margin-bottom: osa.fibo(1)
             color: var(--color-gray-700, #374151)
+            line-height: 1.6
             
-        :deep(strong)
+        :deep([data-taxonom-bold])
             font-weight: 700
             color: var(--color-gray-900, #111827)
             
-        :deep(em)
+        :deep([data-taxonom-italic])
             font-style: italic
             
-        :deep(code)
+        :deep([data-taxonom-code])
             padding: osa.fibo(-2) osa.fibo(-1)
             background: var(--color-gray-100, #f3f4f6)
             border-radius: 3px
             font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace
             font-size: 0.9em
             
-        :deep(hr)
+        :deep([data-taxonom-hr])
             margin: osa.fibo(2) 0
             border: none
             border-top: 2px solid var(--color-gray-300, #d1d5db)
+            
+        :deep([data-taxonom-codeblock])
+            margin: osa.fibo(2) 0
+            padding: osa.fibo(1)
+            background: var(--color-gray-900, #111827)
+            border-radius: 6px
+            overflow-x: auto
+            
+            code
+                display: block
+                color: var(--color-green-400, #4ade80)
+                font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace
+                font-size: osa.harmonic(-1)
+                line-height: 1.5
+                background: none
+                padding: 0
+                border-radius: 0
         
     &__code
         flex: 1

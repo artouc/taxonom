@@ -11,6 +11,7 @@ export interface TaxonomConfig {
     bold?: string
     italic?: string
     code?: string
+    codeBlock?: string
     link?: string
     image?: string
     blockquote?: string
@@ -40,4 +41,5 @@ export type MarkdownToken = {
     href?: string
     title?: string
     alt?: string
+    language?: string
 }

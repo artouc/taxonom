@@ -19,6 +19,7 @@
         "vue-tsc": "^2.0.0"
     },
     "dependencies": {
+        "@osaxyz/mediaquery": "^1.0.0",
         "@osaxyz/taxonom": "file:../taxonom",
         "@osaxyz/taxonom-style": "file:../taxonom-style",
         "destyle.css": "^4.0.1",

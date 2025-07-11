@@ -16,6 +16,7 @@ class TaxonomParser {
             bold: 'strong',
             italic: 'em',
             code: 'code',
+            codeBlock: 'pre',
             link: 'a',
             image: 'img',
             blockquote: 'blockquote',
@@ -56,6 +57,27 @@ class TaxonomParser {
         for (let i = 0; i < lines.length; i++) {
             const line = lines[i]
             
+            // コードブロックの開始
+            const codeBlockMatch = line.match(/^```(\w*)/)
+            if (codeBlockMatch) {
+                const language = codeBlockMatch[1] || ''
+                const codeLines: string[] = []
+                
+                // コードブロックの終了まで読み取り
+                i++
+                while (i < lines.length && !lines[i].match(/^```$/)) {
+                    codeLines.push(lines[i])
+                    i++
+                }
+                
+                tokens.push({
+                    type: 'codeBlock',
+                    content: codeLines.join('\n'),
+                    language
+                })
+                continue
+            }
+            
             // 見出しの処理
             const headingMatch = line.match(/^(#{1,6})\s+(.+)$/)
             if (headingMatch) {
@@ -94,13 +116,19 @@ class TaxonomParser {
             switch (token.type) {
                 case 'heading':
                     const headingTag = this.getHeadingTag(token.level || 1)
-                    return `<${headingTag}>${this.processInlineElements(token.content)}</${headingTag}>`
+                    const headingDataAttr = `data-taxonom-h${token.level || 1}`
+                    return `<${headingTag} ${headingDataAttr}>${this.processInlineElements(token.content)}</${headingTag}>`
                 
                 case 'hr':
-                    return `<${this.config.hr} />`
+                    return `<${this.config.hr} data-taxonom-hr />`
+                
+                case 'codeBlock':
+                    const languageClass = token.language ? ` class="language-${token.language}"` : ''
+                    const languageDataAttr = token.language ? ` data-taxonom-language="${token.language}"` : ''
+                    return `<${this.config.codeBlock} data-taxonom-codeblock${languageDataAttr}><code${languageClass}>${this.escapeHtml(token.content)}</code></${this.config.codeBlock}>`
                 
                 case 'paragraph':
-                    return `<p>${this.processInlineElements(token.content)}</p>`
+                    return `<p data-taxonom-p>${this.processInlineElements(token.content)}</p>`
                 
                 default:
                     return token.content
@@ -124,15 +152,28 @@ class TaxonomParser {
     // NOTE: インライン要素（太字、斜体など）を処理
     private processInlineElements(text: string): string {
         // 太字の処理
-        text = text.replace(/\*\*(.+?)\*\*/g, `<${this.config.bold}>$1</${this.config.bold}>`)
+        text = text.replace(/\*\*(.+?)\*\*/g, `<${this.config.bold} data-taxonom-bold>$1</${this.config.bold}>`)
         
         // 斜体の処理
-        text = text.replace(/\*(.+?)\*/g, `<${this.config.italic}>$1</${this.config.italic}>`)
+        text = text.replace(/\*(.+?)\*/g, `<${this.config.italic} data-taxonom-italic>$1</${this.config.italic}>`)
         
         // インラインコードの処理
-        text = text.replace(/`(.+?)`/g, `<${this.config.code}>$1</${this.config.code}>`)
+        text = text.replace(/`(.+?)`/g, `<${this.config.code} data-taxonom-code>$1</${this.config.code}>`)
         
         return text
+    }
+
+    // NOTE: HTMLエスケープ処理
+    private escapeHtml(text: string): string {
+        const htmlEscapes: Record<string, string> = {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#39;'
+        }
+        
+        return text.replace(/[&<>"']/g, char => htmlEscapes[char])
     }
 }
 
