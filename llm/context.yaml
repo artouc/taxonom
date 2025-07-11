@@ -3,37 +3,110 @@
 
 project_info:
     name: "Taxonom"
-    description: "Vue.js向け高速マークダウンパーサー"
+    description: "Vue.js向け高速マークダウンパーサー（ヘッドレス設計）"
     type: "モノレポ"
+    current_version: "0.1.0"
     
 reference_files:
-    high_priority:
+    critical_priority:
         - file: "CLAUDE.md"
           importance: "critical"
-          description: "プロジェクト全体のルールと規約"
+          description: "プロジェクト全体のルールと規約（必読）"
         - file: "BLUEPRINT.md"
           importance: "critical"
           description: "プロジェクトの仕様と要件定義"
+        - file: "llm/history/20250711125846_development-history.yaml"
+          importance: "critical"
+          description: "最新の開発履歴（コードブロック・データ属性機能実装）"
+    
+    high_priority:
+        - file: "taxonom/src/types.ts"
+          importance: "high"
+          description: "パーサーの型定義（TaxonomConfig等）"
+        - file: "taxonom/src/parser.ts"
+          importance: "high"
+          description: "メインパーサー実装（コードブロック・データ属性対応）"
+        - file: "taxonom/src/index.ts"
+          importance: "high"
+          description: "パーサーAPI エクスポート"
+        - file: "playground/src/components/TaxonomDemo.vue"
+          importance: "high"
+          description: "デモアプリケーション実装（Vue.js）"
     
     medium_priority:
         - file: "package.json"
-          importance: "high"
+          importance: "medium"
           description: "ワークスペース設定とルートパッケージ情報"
         - file: "taxonom/package.json"
-          importance: "high"
+          importance: "medium"
           description: "メインパーサーパッケージの設定"
         - file: "taxonom-style/package.json"
-          importance: "high"
+          importance: "medium"
           description: "スタイルパッケージの設定"
         - file: "playground/package.json"
-          importance: "high"
-          description: "デモアプリケーションの設定"
+          importance: "medium"
+          description: "Vue.jsデモアプリケーションの設定"
+
+implemented_features:
+    core_parser:
+        - "見出し（H1-H6）解析"
+        - "太字・斜体・インラインコード解析"
+        - "コードブロック（```）解析・言語指定対応"
+        - "水平線（---）解析"
+        - "段落テキスト解析"
+        - "HTMLエスケープ処理"
+        - "データ属性自動付与（data-taxonom-*）"
+        
+    configuration:
+        - "HTML要素マッピングのカスタマイズ機能"
+        - "Taxonom.initialize()での設定変更"
+        - "リアルタイム設定反映"
+        
+    playground_app:
+        - "Vue.js + Vite構成"
+        - "3カラムレイアウト（入力・HTML・プレビュー）"
+        - "設定パネルでマッピング変更"
+        - "サンプルローダー機能"
+        - "レスポンシブ対応"
 
 structure_overview:
-    - "taxonom/": "メインのマークダウンパーサーパッケージ"
-    - "taxonom-style/": "デフォルトスタイルパッケージ"
-    - "playground/": "Nuxt.jsデモアプリケーション"
-    - "llm/": "LLM作業管理ディレクトリ"
-    - "scripts/": "実行スクリプト管理"
+    packages:
+        - "taxonom/": "メインのマークダウンパーサーパッケージ（@osaxyz/taxonom）"
+        - "taxonom-style/": "デフォルトスタイルパッケージ（@osaxyz/taxonom-style）"
+        - "playground/": "Vue.jsデモアプリケーション"
+        
+    management:
+        - "llm/": "LLM作業管理ディレクトリ"
+        - "scripts/": "実行スクリプト管理（run.sh）"
 
-current_status: "初期セットアップ完了。基本的なディレクトリ構造とpackage.json設定済み"
+data_attributes_system:
+    purpose: "CSSクラスと競合しない明確なスタイリング"
+    implementation:
+        heading: "data-taxonom-h1 〜 data-taxonom-h6"
+        paragraph: "data-taxonom-p"
+        bold: "data-taxonom-bold"
+        italic: "data-taxonom-italic"
+        inline_code: "data-taxonom-code"
+        code_block: "data-taxonom-codeblock"
+        horizontal_rule: "data-taxonom-hr"
+        language: "data-taxonom-language=\"javascript\""
+
+development_commands:
+    setup: "./scripts/run.sh setup"
+    dev_playground: "./scripts/run.sh dev"
+    dev_parser: "./scripts/run.sh dev:parser"
+    build_all: "./scripts/run.sh build"
+    
+pending_features:
+    high_priority:
+        - "リスト機能（ul/ol/li）"
+        - "リンク機能（[text](url)）"
+        - "画像機能（![alt](src)）"
+        - "ブロッククォート機能（>）"
+        
+    medium_priority:
+        - "テーブル機能"
+        - "ネストした要素対応"
+        - "カスタムレンダラー"
+
+current_status: "基本パーサー機能・コードブロック・データ属性機能実装完了。playground動作確認済み。次はリスト・リンク・画像機能の実装フェーズ。"

@@ -1,0 +1,122 @@
+# コードブロック機能とデータ属性機能の実装
+# 作業日時: 2025-07-11 12:58:46
+
+scope: "development"
+summary: "Taxonomパーサーにコードブロック解析機能とデータ属性出力機能を追加"
+
+completed_tasks:
+    - task: "コードブロック機能の実装"
+      details: |
+        - TaxonomConfigにcodeBlockプロパティを追加
+        - ```記法のコードブロック解析機能を実装
+        - 言語指定（```javascript等）に対応
+        - HTMLエスケープ処理でセキュリティ確保
+        - preタグ内にcodeタグを生成する構造
+        
+    - task: "データ属性機能の実装"
+      details: |
+        - 全ての要素にdata-taxonom-*属性を自動付与
+        - 見出し: data-taxonom-h1〜h6
+        - 段落: data-taxonom-p
+        - 太字: data-taxonom-bold
+        - 斜体: data-taxonom-italic
+        - インラインコード: data-taxonom-code
+        - コードブロック: data-taxonom-codeblock
+        - 水平線: data-taxonom-hr
+        - 言語指定: data-taxonom-language="言語名"
+        
+    - task: "playgroundアプリケーションの改善"
+      details: |
+        - Vue.js構成への変更（NuxtからViteベースに）
+        - 設定パネルを常時表示に変更
+        - サンプルコードにコードブロック例を追加
+        - データ属性セレクターでのスタイリング実装
+        - レスポンシブ対応の強化
+
+technical_improvements:
+    parser_enhancements:
+        - "コードブロックトークン化処理の追加"
+        - "HTMLエスケープ機能の実装"
+        - "言語指定メタデータの保持"
+        - "データ属性自動付与システム"
+        
+    build_system:
+        - "tslib依存関係の解決"
+        - "Rollup設定の最適化"
+        - "TypeScript設定の調整"
+        
+    playground_features:
+        - "3カラムレイアウト（入力・HTML・プレビュー）"
+        - "リアルタイムマークダウン変換"
+        - "設定パネルでのマッピング変更"
+        - "サンプルローダー機能"
+
+code_structure_updates:
+    taxonom_package:
+        - "src/types.ts: コードブロック型定義追加"
+        - "src/parser.ts: コードブロック解析・データ属性機能"
+        - "src/index.ts: APIエクスポート更新"
+        
+    playground_package:
+        - "package.json: Vue.js構成に変更"
+        - "vite.config.ts: Vite設定"
+        - "src/components/TaxonomDemo.vue: デモ機能実装"
+        - "スタイリング: データ属性セレクター使用"
+
+sample_output_examples:
+    markdown_input: |
+        # 見出し
+        **太字** と *斜体*
+        `インラインコード`
+        
+        ```javascript
+        console.log('Hello World');
+        ```
+        
+    html_output: |
+        <h2 data-taxonom-h1>見出し</h2>
+        <p data-taxonom-p><strong data-taxonom-bold>太字</strong> と <em data-taxonom-italic>斜体</em></p>
+        <p data-taxonom-p><code data-taxonom-code>インラインコード</code></p>
+        <pre data-taxonom-codeblock data-taxonom-language="javascript"><code class="language-javascript">console.log('Hello World');</code></pre>
+
+configuration_example:
+    user_customizable_mapping:
+        h1: "h2"          # #見出し → h2要素
+        h2: "h3"          # ##見出し → h3要素
+        bold: "strong"    # **太字** → strong要素
+        italic: "em"      # *斜体* → em要素
+        code: "code"      # `コード` → code要素
+        codeBlock: "pre"  # ```コードブロック``` → pre要素
+        hr: "hr"          # --- → hr要素
+
+performance_notes:
+    - "正規表現ベースの高速パース処理"
+    - "メモリ効率的なトークン処理"
+    - "Vue.jsリアクティブシステムとの最適化"
+
+next_steps:
+    immediate_priorities:
+        - "リスト（ul/ol/li）機能の実装"
+        - "リンク（[text](url)）機能の実装"
+        - "画像（![alt](src)）機能の実装"
+        - "ブロッククォート（>）機能の実装"
+        - "テーブル機能の実装"
+        
+    advanced_features:
+        - "ネストした要素の対応"
+        - "カスタムレンダラー機能"
+        - "プラグインシステム"
+        - "シンタックスハイライト統合"
+
+blueprint_compliance:
+    - "✅ Vue.js対応のヘッドレスパーサー"
+    - "✅ 設定可能なHTML要素マッピング"
+    - "✅ モノレポ構造（taxonom + taxonom-style + playground）"
+    - "✅ npmパッケージ公開準備"
+    - "✅ デモアプリケーション（playground）"
+
+status: "完了"
+notes: |
+    基本的なマークダウンパース機能とコードブロック、データ属性機能が実装完了。
+    BLUEPRINT.mdの要件を満たし、playgroundで動作確認可能な状態。
+    次フェーズではリスト、リンク、画像等の追加要素実装を予定。
