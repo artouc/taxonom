@@ -20,8 +20,8 @@
     },
     "dependencies": {
         "@osaxyz/mediaquery": "^1.1.0",
-        "@osaxyz/taxonom": "^0.2.1",
-        "@osaxyz/taxonom-style": "^0.2.1",
+        "@osaxyz/taxonom": "^0.2.3",
+        "@osaxyz/taxonom-style": "^0.2.3",
         "destyle.css": "^4.0.1",
         "highlight.js": "^11.11.1",
         "vue": "^3.3.8"
