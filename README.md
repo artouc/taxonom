@@ -1,28 +1,204 @@
 # Taxonom
 
-Vue.js向け高速マークダウンパーサー
+高速なマークダウンパーサー for Vue.js / Nuxt.js
+
+[![npm version](https://badge.fury.io/js/@osaxyz%2Ftaxonom.svg)](https://badge.fury.io/js/@osaxyz%2Ftaxonom)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## 概要
 
-Taxonomは、Vue.js・Nuxt.jsアプリケーション向けの高速なマークダウンパーサーです。ヘッドレス設計により、スタイルはユーザーが自由に設定できます。
+**Taxonom** は Vue.js / Nuxt.js 向けに設計された高速マークダウンパーサーです。ヘッドレス設計により既存のCSSフレームワークと競合せず、`data-taxonom-*` 属性によるターゲット指定でスタイリングできます。
 
 ## 特徴
 
-- 🚀 **高速**: 最適化されたパフォーマンス
-- 🎨 **ヘッドレス**: スタイルは完全にカスタマイズ可能
-- ⚙️ **設定可能**: マークダウン記法とHTML要素のマッピングを自由に設定
-- 📦 **モノレポ**: パーサーとスタイルパッケージを分離
-- 🔧 **Vue 3対応**: Composition APIに完全対応
+- 🚀 **高速パフォーマンス**: 軽量で高速な処理
+- 🎯 **ヘッドレス設計**: 既存のCSSと競合しない
+- 🔧 **高い柔軟性**: HTML要素のマッピングをカスタマイズ可能
+- 💎 **シンタックスハイライト**: highlight.js統合による美しいコード表示
+- 📱 **Vue.js / Nuxt.js 最適化**: フレームワーク特化設計
+- 🎨 **data属性システム**: `data-taxonom-*` による明確なスタイリング
 
-## パッケージ構成
+## モノレポ構成
 
-このプロジェクトはモノレポとして構成されています：
+このリポジトリは3つのパッケージで構成されています：
 
-- **`@osaxyz/taxonom`**: メインのマークダウンパーサー
-- **`@osaxyz/taxonom-style`**: デフォルトスタイル（オプション）
-- **`playground`**: デモアプリケーション
+### 📦 [@osaxyz/taxonom](./taxonom/)
+メインのマークダウンパーサー
 
-## セットアップ
+```bash
+npm install @osaxyz/taxonom
+```
+
+- TypeScript完全対応
+- highlight.js統合
+- Vue.js / Nuxt.js 最適化
+- カスタマイズ可能なHTML要素マッピング
+
+### 🎨 [@osaxyz/taxonom-style](./taxonom-style/)
+デフォルトスタイルパッケージ
+
+```bash
+npm install @osaxyz/taxonom-style
+```
+
+- GitHub Darkテーマベースのシンタックスハイライト
+- CSS変数によるテーマカスタマイズ
+- レスポンシブ対応
+- data-taxonom属性専用設計
+
+### 🎮 [playground](./playground/)
+Vue.js デモアプリケーション
+
+```bash
+cd playground && npm install && npm run dev
+```
+
+- リアルタイムプレビュー
+- 設定パネル
+- 3カラムレイアウト
+- レスポンシブ対応
+
+## クイックスタート
+
+### Vue.js での使用
+
+```javascript
+// main.js
+import { createApp } from 'vue'
+import App from './App.vue'
+import '@osaxyz/taxonom-style'
+
+createApp(App).mount('#app')
+```
+
+```vue
+<template>
+  <div v-html="parsedMarkdown"></div>
+</template>
+
+<script setup>
+import { ref, computed } from 'vue'
+import { Taxonom } from '@osaxyz/taxonom'
+
+const markdown = ref(`
+# Hello Taxonom
+
+これは**太字**で*斜体*のテキストです。
+
+\`\`\`javascript
+function hello() {
+    console.log('Hello, Taxonom!')
+}
+\`\`\`
+`)
+
+const parsedMarkdown = computed(() => {
+  return Taxonom.parse(markdown.value, { highlightCode: true })
+})
+</script>
+```
+
+### Nuxt.js での使用
+
+```javascript
+// nuxt.config.js
+export default defineNuxtConfig({
+  css: [
+    '@osaxyz/taxonom-style'
+  ]
+})
+```
+
+```vue
+<template>
+  <article v-html="content"></article>
+</template>
+
+<script setup>
+import { Taxonom } from '@osaxyz/taxonom'
+
+const props = defineProps({
+  markdown: String
+})
+
+const content = computed(() => {
+  return Taxonom.parse(props.markdown, { highlightCode: true })
+})
+</script>
+```
+
+## サポートされているマークダウン記法
+
+| 記法 | 出力 | data属性 |
+|------|------|----------|
+| `# 見出し` | `<h2 data-taxonom-h1>` | `data-taxonom-h1` ~ `h6` |
+| `**太字**` | `<strong data-taxonom-bold>` | `data-taxonom-bold` |
+| `*斜体*` | `<em data-taxonom-italic>` | `data-taxonom-italic` |
+| `` `コード` `` | `<code data-taxonom-code>` | `data-taxonom-code` |
+| `![画像](url)` | `<img data-taxonom-img>` | `data-taxonom-img` |
+| `[リンク](url)` | `<a data-taxonom-link>` | `data-taxonom-link` |
+| `> 引用` | `<blockquote data-taxonom-blockquote>` | `data-taxonom-blockquote` |
+| `- リスト` | `<ul data-taxonom-ul>` | `data-taxonom-ul` |
+| `1. 番号リスト` | `<ol data-taxonom-ol>` | `data-taxonom-ol` |
+| `---` | `<hr data-taxonom-hr>` | `data-taxonom-hr` |
+
+### コードブロック & シンタックスハイライト
+
+````markdown
+```javascript
+function greet(name) {
+    console.log(`Hello, ${name}!`)
+}
+```
+````
+
+⬇️
+
+```html
+<pre data-taxonom-codeblock data-taxonom-language="javascript">
+  <code class="language-javascript">
+    <!-- highlight.jsによる美しいシンタックスハイライト -->
+  </code>
+</pre>
+```
+
+## 設定のカスタマイズ
+
+HTML要素のマッピングをカスタマイズできます：
+
+```javascript
+import { Taxonom } from '@osaxyz/taxonom'
+
+// カスタム設定
+Taxonom.initialize({
+  h1: 'h1',        // デフォルトは 'h2'
+  h2: 'h2',        // デフォルトは 'h3'
+  bold: 'b',       // デフォルトは 'strong'
+  italic: 'i'      // デフォルトは 'em'
+})
+
+const html = Taxonom.parse(markdown, { highlightCode: true })
+```
+
+## CSS テーマのカスタマイズ
+
+CSS変数でテーマをカスタマイズできます：
+
+```css
+:root {
+  /* プライマリカラー */
+  --color-primary: #your-color;
+  --color-primary-50: #your-color-light;
+  --color-primary-600: #your-color-dark;
+  
+  /* グレースケール */
+  --color-gray-50: #your-gray-light;
+  --color-gray-700: #your-gray-dark;
+  --color-gray-900: #your-gray-darkest;
+}
+```
+
+## 開発者向けセットアップ
 
 ### 要件
 
@@ -40,9 +216,7 @@ cd taxonom
 ./scripts/run.sh setup
 ```
 
-## 開発
-
-### 利用可能なコマンド
+## 開発者向けコマンド
 
 ```bash
 # 開発サーバー起動（playground）
@@ -67,66 +241,75 @@ cd taxonom
 ./scripts/run.sh clean
 ```
 
-### ディレクトリ構造
+## プロジェクト構造
 
 ```
 taxonom/
-├── CLAUDE.md           # プロジェクト規約
-├── BLUEPRINT.md        # 仕様書
-├── README.md          # このファイル
-├── package.json       # ワークスペース設定
-├── .gitignore
+├── README.md                      # このファイル
+├── CLAUDE.md                      # 開発ルール・規約
+├── BLUEPRINT.md                   # プロジェクト仕様
 ├── scripts/
-│   └── run.sh         # 管理スクリプト
-├── llm/               # LLM作業管理
-│   ├── context.yaml
-│   ├── structure/
-│   └── history/
-├── taxonom/           # メインパーサー
-│   ├── package.json
-│   └── src/
-├── taxonom-style/     # スタイルパッケージ  
-│   ├── package.json
-│   └── src/
-└── playground/        # デモアプリ（Nuxt.js）
-    ├── package.json
-    └── src/
+│   └── run.sh                     # 開発用スクリプト
+├── taxonom/                       # メインパーサーパッケージ
+│   ├── src/
+│   │   ├── index.ts               # API エクスポート
+│   │   ├── parser.ts              # パーサー実装
+│   │   └── types.ts               # 型定義
+│   ├── dist/                      # ビルド出力
+│   └── package.json
+├── taxonom-style/                 # スタイルパッケージ
+│   ├── src/
+│   │   └── index.sass             # メインスタイル
+│   ├── dist/
+│   │   └── index.css              # ビルド出力
+│   └── package.json
+├── playground/                     # デモアプリケーション
+│   ├── src/
+│   │   └── components/
+│   │       └── TaxonomDemo.vue    # デモコンポーネント
+│   └── package.json
+└── llm/                           # AI作業管理
+    ├── context.yaml               # プロジェクトコンテキスト
+    └── history/                   # 開発履歴
 ```
 
-## 使用方法
+## ロードマップ
 
-### 基本的な使い方
+### 実装済み ✅
+- [x] 基本マークダウン記法（見出し、太字、斜体、コード）
+- [x] リスト機能（ul/ol/li）
+- [x] リンク・画像・ブロッククォート
+- [x] シンタックスハイライト（highlight.js統合）
+- [x] data-taxonom属性システム
+- [x] NPMパッケージ公開
 
-```javascript
-import { Taxonom } from '@osaxyz/taxonom'
+### 予定 🚧
+- [ ] テーブル機能（table/thead/tbody/tr/th/td）
+- [ ] ネストしたリスト対応
+- [ ] カスタムレンダラー機能
+- [ ] パフォーマンス最適化
+- [ ] プラグインシステム
 
-// パーサーを初期化
-Taxonom.initialize({
-    h1: 'h2',  // #見出し → h2要素
-    hr: 'hr',  // --- → hr要素
-    // その他の設定...
-})
+## 貢献
 
-// マークダウンをHTMLに変換
-const html = Taxonom.parse('# Hello World\n\nThis is **bold** text.')
-```
+プルリクエストや Issue を歓迎します！
 
-### スタイル適用
-
-```javascript
-// デフォルトスタイルを使用する場合
-import '@osaxyz/taxonom-style'
-```
+1. このリポジトリをフォーク
+2. フィーチャーブランチを作成 (`git checkout -b feature/amazing-feature`)
+3. 変更をコミット (`git commit -m 'Add amazing feature'`)
+4. ブランチにプッシュ (`git push origin feature/amazing-feature`)
+5. プルリクエストを作成
 
 ## ライセンス
 
-MIT License
+MIT License - 詳細は [LICENSE](LICENSE) ファイルを参照
 
-## 作者
+## 関連リンク
 
-Original SIN Architecture ([osa.xyz](https://osa.xyz))
+- [NPM: @osaxyz/taxonom](https://www.npmjs.com/package/@osaxyz/taxonom)
+- [NPM: @osaxyz/taxonom-style](https://www.npmjs.com/package/@osaxyz/taxonom-style)
+- [highlight.js](https://highlightjs.org/)
 
-## リンク
+---
 
-- [GitHub](https://github.com/artouc/taxonom)
-- [デモ](https://taxonom.vercel.app)
+Made with ❤️ by [OSA](https://osa.xyz)

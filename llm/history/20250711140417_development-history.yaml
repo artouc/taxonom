@@ -1,0 +1,108 @@
+---
+# 作業履歴: highlight.js統合とNPM発行
+timestamp: 20250711140417
+scope: development
+status: completed
+version: "0.2.0"
+
+## 概要
+Taxonomマークダウンパーサーにhighlight.jsによるシンタックスハイライト機能を統合し、両パッケージをNPMに公開しました。
+
+## 実装された機能
+
+### 1. highlight.js統合
+- **パッケージ追加**: `highlight.js@^11.11.1`をtaxonomパッケージの依存関係に追加
+- **パーサー拡張**: `highlightCode`メソッドを実装
+  - 言語指定時: 指定言語でシンタックスハイライト
+  - 言語未指定時: 自動言語検出
+  - エラー時: 安全なHTMLエスケープに自動フォールバック
+- **設定オプション**: `ParseOptions`に`highlightCode`フラグを追加
+
+### 2. スタイル拡張
+- **GitHub Darkテーマ**: highlight.js用CSSスタイルをtaxonom-styleに追加
+- **カラーパレット**: 
+  - キーワード: #ff7b72 (赤)
+  - 文字列: #a5d6ff (青)
+  - 関数: #d2a8ff (紫)
+  - 数値: #79c0ff (シアン)
+  - コメント: #8b949e (グレー)
+
+### 3. パーサー処理順序修正
+- **問題解決**: インライン要素の処理順序を最適化
+- **新順序**: コード → 太字 → 斜体 → 画像 → リンク
+- **バグ修正**: `*斜体*で![image]`パターンの解析エラーを解決
+
+## パッケージ情報
+
+### @osaxyz/taxonom@0.2.0
+- **新機能**: highlight.jsサポート
+- **依存関係**: highlight.js@^11.11.1
+- **エクスポート**: ES Module + CommonJS
+- **型定義**: 完全TypeScript対応
+
+### @osaxyz/taxonom-style@0.2.0
+- **新機能**: シンタックスハイライト用CSS
+- **テーマ**: GitHub Dark準拠
+- **サイズ**: 4.1kB (圧縮済み)
+
+## NPM公開結果
+- ✅ **@osaxyz/taxonom-style@0.2.0**: 正常公開完了
+- ✅ **@osaxyz/taxonom@0.2.0**: 正常公開完了
+- 📦 **パッケージサイズ**: 
+  - taxonom: 5.1kB
+  - taxonom-style: 4.1kB
+
+## 使用方法
+
+### インストール
+```bash
+npm install @osaxyz/taxonom @osaxyz/taxonom-style
+```
+
+### Vue.js
+```javascript
+import { Taxonom } from '@osaxyz/taxonom'
+import '@osaxyz/taxonom-style'
+
+const html = Taxonom.parse(markdown, { highlightCode: true })
+```
+
+### Nuxt.js
+```javascript
+// nuxt.config.js
+export default defineNuxtConfig({
+  css: ['@osaxyz/taxonom-style']
+})
+```
+
+## テスト結果
+- ✅ **ビルド**: 両パッケージ正常
+- ✅ **プレイグラウンド**: 動作確認済み
+- ✅ **型定義**: TypeScript完全対応
+- ✅ **依存関係**: 解決済み
+
+## 技術的変更点
+
+### 新規追加ファイル
+- `taxonom/src/parser.ts`: `highlightCode`メソッド追加
+- `taxonom/src/types.ts`: `ParseOptions.highlightCode`フィールド追加
+- `taxonom-style/src/index.sass`: highlight.js用スタイル追加
+
+### バージョン管理
+- **セマンティックバージョニング**: 新機能追加により0.1.0 → 0.2.0
+- **peerDependencies**: taxonom-style側を0.2.0に更新
+
+## 今後の改善点
+- [ ] コードテーマのカスタマイズ対応
+- [ ] 言語別の詳細設定オプション
+- [ ] パフォーマンス最適化（大型コードブロック対応）
+- [ ] プラグインシステムの検討
+
+## 関連リンク
+- NPM: https://www.npmjs.com/package/@osaxyz/taxonom
+- NPM: https://www.npmjs.com/package/@osaxyz/taxonom-style
+- highlight.js: https://highlightjs.org/
+
+---
+作成者: Claude AI Assistant
+作成日時: 2025年7月11日 14:04:17

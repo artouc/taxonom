@@ -5,7 +5,7 @@ project_info:
     name: "Taxonom"
     description: "Vue.js向け高速マークダウンパーサー（ヘッドレス設計）"
     type: "モノレポ"
-    current_version: "0.1.0"
+    current_version: "0.2.0"
     
 reference_files:
     critical_priority:
@@ -15,9 +15,12 @@ reference_files:
         - file: "BLUEPRINT.md"
           importance: "critical"
           description: "プロジェクトの仕様と要件定義"
-        - file: "llm/history/20250711132549_style-package-history.yaml"
+        - file: "llm/history/20250711140417_development-history.yaml"
           importance: "critical"
-          description: "最新の開発履歴（taxonom-styleパッケージ化完了）"
+          description: "最新の開発履歴（highlight.js統合・NPM公開完了・v0.2.0）"
+        - file: "llm/history/20250711132549_style-package-history.yaml"
+          importance: "high"
+          description: "スタイルパッケージ化完了履歴"
         - file: "llm/history/20250711130753_features-history.yaml"
           importance: "high"
           description: "前回の開発履歴（全予定機能実装完了）"
@@ -69,12 +72,17 @@ implemented_features:
         - "リンク機能（[text](url)）解析"
         - "画像機能（![alt](src)）解析"
         - "ブロッククォート機能（>）解析"
+        - "highlight.js統合（シンタックスハイライト）"
+        - "言語自動検出・指定言語対応"
+        - "安全なエラーハンドリング（フォールバック）"
         
     style_package:
         - "複数エントリーポイント対応（index/data-only/html-tags）"
         - "CSS変数でのカスタマイズサポート"
         - "プレイグラウンドからのスタイル完全移行"
         - "企業レベルのnpmパッケージ化"
+        - "highlight.js用GitHub Darkテーマ対応"
+        - "NPM公開済み（@osaxyz/taxonom-style@0.2.0）"
         
     configuration:
         - "HTML要素マッピングのカスタマイズ機能"
@@ -132,4 +140,4 @@ pending_features:
         - "パフォーマンス最適化"
         - "プラグインシステム"
 
-current_status: "コア機能・スタイルパッケージ化完全完了！@osaxyz/taxonomと@osaxyz/taxonom-styleが独立したnpmパッケージとして機能。プレイグラウンドでパッケージ使用確認済み。次はテーブル機能やnpm公開のフェーズ。"
+current_status: "v0.2.0 NPM公開完了！highlight.js統合によりシンタックスハイライト対応。@osaxyz/taxonom@0.2.0と@osaxyz/taxonom-style@0.2.0がNPMで利用可能。GitHub Darkテーマでコードブロックが美しく表示される。次はテーブル機能やパフォーマンス最適化のフェーズ。"
