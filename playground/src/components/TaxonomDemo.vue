@@ -48,7 +48,7 @@ const config = ref<TaxonomConfig>({
 const parsed_html = computed(() => {
     try {
         Taxonom.initialize(config.value)
-        return Taxonom.parse(markdown_input.value)
+        return Taxonom.parse(markdown_input.value, { highlightCode: true })
     } catch (error) {
         return `<p style="color: red;">エラー: ${error}</p>`
     }
@@ -172,7 +172,7 @@ const user: User = {
 #### 新機能の組み合わせ
 
 1. **リスト**に[リンク](https://example.com)を含める
-2. *斜体*で![placeholder](https://via.placeholder.com/100x30)を表示
+2. *斜体*と**太字**を組み合わせたテキスト
 3. ブロッククォート内でコード例を参照
 
 > 全ての機能が**統合的**に動作し、\`data-taxonom-*\`属性で簡単にスタイリング可能です。`

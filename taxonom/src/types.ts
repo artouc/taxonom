@@ -28,6 +28,7 @@ export interface ParseOptions {
     sanitize?: boolean
     allowHtml?: boolean
     breaks?: boolean
+    highlightCode?: boolean
 }
 
 export interface ParseResult {

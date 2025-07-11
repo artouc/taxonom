@@ -1,0 +1,155 @@
+arataouchi@AratanoMac-Studio taxonom % ./scripts/run.sh dev  
+🚀 playground 開発サーバーを起動しています...
+
+> taxonom-workspace@0.1.0 dev
+> npm run dev --workspace=playground
+
+
+> taxonom-playground@0.1.0 dev
+> vite
+
+The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+Port 3000 is in use, trying another one...
+
+  VITE v5.4.19  ready in 402 ms
+
+  ➜  Local:   http://localhost:3001/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+Error:   Failed to scan for dependencies from entries:
+  /Users/arataouchi/Dropbox/workspace/@osa/taxonom/playground/index.html
+
+  ✘ [ERROR] Failed to resolve entry for package "@osaxyz/taxonom". The package may have incorrect main/module/exports specified in its package.json. [plugin vite:dep-scan]
+
+    ../node_modules/esbuild/lib/main.js:1225:21:
+      1225 │         let result = await callback({
+           ╵                      ^
+
+    at packageEntryFailure (file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:46638:15)
+    at resolvePackageEntry (file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:46635:3)
+    at tryNodeResolve (file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:46451:16)
+    at ResolveIdContext.resolveId (file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:46201:19)
+    at PluginContainer.resolveId (file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49018:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async resolve (file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49630:22)
+    at async file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49801:28
+    at async requestCallbacks.on-resolve (/Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/esbuild/lib/main.js:1225:22)
+    at async handleRequest (/Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/esbuild/lib/main.js:647:11)
+
+  This error came from the "onResolve" callback registered here:
+
+    ../node_modules/esbuild/lib/main.js:1150:20:
+      1150 │       let promise = setup({
+           ╵                     ^
+
+    at setup (file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49789:13)
+    at handlePlugins (/Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/esbuild/lib/main.js:1150:21)
+    at buildOrContextImpl (/Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/esbuild/lib/main.js:873:5)
+    at Object.buildOrContext (/Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/esbuild/lib/main.js:699:5)
+    at /Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/esbuild/lib/main.js:2032:68
+    at new Promise (<anonymous>)
+    at Object.context (/Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/esbuild/lib/main.js:2032:27)
+    at Object.context (/Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/esbuild/lib/main.js:1874:58)
+    at prepareEsbuildScanner (file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49576:24)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    script:/Users/arataouchi/Dropbox/workspace/@osa/taxonom/playground/src/components/TaxonomDemo.vue?id=0:3:44:
+      3 │ import { Taxonom, type TaxonomConfig } from '@osaxyz/taxonom'
+        ╵                                             ~~~~~~~~~~~~~~~~~
+
+
+✘ [ERROR] Failed to resolve entry for package "@osaxyz/taxonom-style". The package may have incorrect main/module/exports specified in its package.json. [plugin vite:dep-scan]
+
+    ../node_modules/esbuild/lib/main.js:1225:21:
+      1225 │         let result = await callback({
+           ╵                      ^
+
+    at packageEntryFailure (file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:46638:15)
+    at resolvePackageEntry (file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:46635:3)
+    at tryNodeResolve (file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:46451:16)
+    at ResolveIdContext.resolveId (file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:46201:19)
+    at PluginContainer.resolveId (file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49018:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async resolve (file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49630:22)
+    at async file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49801:28
+    at async requestCallbacks.on-resolve (/Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/esbuild/lib/main.js:1225:22)
+    at async handleRequest (/Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/esbuild/lib/main.js:647:11)
+
+  This error came from the "onResolve" callback registered here:
+
+    ../node_modules/esbuild/lib/main.js:1150:20:
+      1150 │       let promise = setup({
+           ╵                     ^
+
+    at setup (file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49789:13)
+    at handlePlugins (/Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/esbuild/lib/main.js:1150:21)
+    at buildOrContextImpl (/Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/esbuild/lib/main.js:873:5)
+    at Object.buildOrContext (/Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/esbuild/lib/main.js:699:5)
+    at /Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/esbuild/lib/main.js:2032:68
+    at new Promise (<anonymous>)
+    at Object.context (/Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/esbuild/lib/main.js:2032:27)
+    at Object.context (/Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/esbuild/lib/main.js:1874:58)
+    at prepareEsbuildScanner (file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49576:24)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    src/main.ts:5:7:
+      5 │ import '@osaxyz/taxonom-style'
+        ╵        ~~~~~~~~~~~~~~~~~~~~~~~
+
+
+    at failureErrorWithLog (/Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/esbuild/lib/main.js:1472:15)
+    at /Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/esbuild/lib/main.js:945:25
+    at runOnEndCallbacks (/Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/esbuild/lib/main.js:1315:45)
+    at buildResponseToResult (/Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/esbuild/lib/main.js:943:7)
+    at /Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/esbuild/lib/main.js:955:9
+    at new Promise (<anonymous>)
+    at requestCallbacks.on-end (/Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/esbuild/lib/main.js:954:54)
+    at handleRequest (/Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/esbuild/lib/main.js:647:17)
+    at handleIncomingPacket (/Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/esbuild/lib/main.js:672:7)
+    at Socket.readFromStdout (/Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/esbuild/lib/main.js:600:7)
+13:57:46 [vite] Pre-transform error: Failed to resolve entry for package "@osaxyz/taxonom-style". The package may have incorrect main/module/exports specified in its package.json.
+13:57:46 [vite] Pre-transform error: Failed to resolve entry for package "@osaxyz/taxonom". The package may have incorrect main/module/exports specified in its package.json.
+Deprecation Warning [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+Deprecation Warning [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+Deprecation Warning [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+13:57:47 [vite] Pre-transform error: Failed to resolve entry for package "@osaxyz/taxonom-style". The package may have incorrect main/module/exports specified in its package.json.
+13:57:47 [vite] Internal server error: Failed to resolve entry for package "@osaxyz/taxonom-style". The package may have incorrect main/module/exports specified in its package.json.
+  Plugin: vite:import-analysis
+  File: /Users/arataouchi/Dropbox/workspace/@osa/taxonom/playground/src/main.ts
+      at packageEntryFailure (file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:46638:15)
+      at resolvePackageEntry (file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:46635:3)
+      at tryNodeResolve (file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:46451:16)
+      at ResolveIdContext.resolveId (file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:46201:19)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async PluginContainer.resolveId (file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49017:22)
+      at async TransformPluginContext.resolve (file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49178:15)
+      at async normalizeUrl (file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:64284:26)
+      at async file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:64423:39
+      at async Promise.all (index 4)
+13:57:47 [vite] Pre-transform error: Failed to resolve entry for package "@osaxyz/taxonom-style". The package may have incorrect main/module/exports specified in its package.json.
+13:57:50 [vite] Pre-transform error: Failed to resolve entry for package "@osaxyz/taxonom-style". The package may have incorrect main/module/exports specified in its package.json. (x2)
+13:57:50 [vite] Internal server error: Failed to resolve entry for package "@osaxyz/taxonom-style". The package may have incorrect main/module/exports specified in its package.json.
+  Plugin: vite:import-analysis
+  File: /Users/arataouchi/Dropbox/workspace/@osa/taxonom/playground/src/main.ts
+      at packageEntryFailure (file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:46638:15)
+      at resolvePackageEntry (file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:46635:3)
+      at tryNodeResolve (file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:46451:16)
+      at ResolveIdContext.resolveId (file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:46201:19)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async PluginContainer.resolveId (file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49017:22)
+      at async TransformPluginContext.resolve (file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49178:15)
+      at async normalizeUrl (file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:64284:26)
+      at async file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:64423:39
+      at async Promise.all (index 4)
+13:57:50 [vite] Pre-transform error: Failed to resolve entry for package "@osaxyz/taxonom-style". The package may have incorrect main/module/exports specified in its package.json.

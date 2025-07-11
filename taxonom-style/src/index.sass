@@ -103,13 +103,92 @@ $font-mono: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace
     
     code
         display: block
-        color: #4ade80
+        color: #ffffff
         font-family: $font-mono
         font-size: 0.875rem
         line-height: 1.5
         background: none
         padding: 0
         border-radius: 0
+
+// highlight.js テーマ (GitHub Dark)
+[data-taxonom-codeblock] code
+    // 基本テキスト
+    color: #ffffff
+    
+    // コメント
+    .hljs-comment,
+    .hljs-quote
+        color: #8b949e
+        font-style: italic
+    
+    // キーワード、変数、関数名
+    .hljs-keyword,
+    .hljs-selector-tag,
+    .hljs-literal,
+    .hljs-section,
+    .hljs-link
+        color: #ff7b72
+    
+    // 関数、クラス名
+    .hljs-function .hljs-keyword
+        color: #d2a8ff
+    
+    // 文字列
+    .hljs-string,
+    .hljs-template-string
+        color: #a5d6ff
+    
+    // 数値
+    .hljs-number,
+    .hljs-regexp
+        color: #79c0ff
+    
+    // 型、属性
+    .hljs-type,
+    .hljs-built_in,
+    .hljs-builtin-name,
+    .hljs-attr,
+    .hljs-variable,
+    .hljs-template-variable
+        color: #ffa657
+    
+    // 関数名、メソッド
+    .hljs-function,
+    .hljs-title,
+    .hljs-title.class_,
+    .hljs-title.function_
+        color: #d2a8ff
+    
+    // 演算子、記号
+    .hljs-operator,
+    .hljs-punctuation
+        color: #f85149
+    
+    // タグ
+    .hljs-tag
+        color: #7ee787
+    
+    // 属性値
+    .hljs-name,
+    .hljs-property
+        color: #79c0ff
+    
+    // 削除、追加
+    .hljs-deletion
+        color: #ffa198
+        background-color: #490202
+    
+    .hljs-addition
+        color: #56d364
+        background-color: #0f5132
+    
+    // 強調
+    .hljs-emphasis
+        font-style: italic
+    
+    .hljs-strong
+        font-weight: bold
 
 // リスト
 [data-taxonom-ul]

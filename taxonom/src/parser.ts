@@ -1,4 +1,5 @@
 import { TaxonomConfig, ParseOptions, ParseResult, MarkdownToken } from './types'
+import hljs from 'highlight.js'
 
 class TaxonomParser {
     private config: TaxonomConfig
@@ -187,7 +188,8 @@ class TaxonomParser {
                 case 'codeBlock':
                     const languageClass = token.language ? ` class="language-${token.language}"` : ''
                     const languageDataAttr = token.language ? ` data-taxonom-language="${token.language}"` : ''
-                    return `<${this.config.codeBlock} data-taxonom-codeblock${languageDataAttr}><code${languageClass}>${this.escapeHtml(token.content)}</code></${this.config.codeBlock}>`
+                    const codeContent = this.highlightCode(token.content, token.language, options)
+                    return `<${this.config.codeBlock} data-taxonom-codeblock${languageDataAttr}><code${languageClass}>${codeContent}</code></${this.config.codeBlock}>`
                 
                 case 'blockquote':
                     return `<${this.config.blockquote} data-taxonom-blockquote>${this.processInlineElements(token.content)}</${this.config.blockquote}>`
@@ -224,6 +226,15 @@ class TaxonomParser {
 
     // NOTE: インライン要素（太字、斜体など）を処理
     private processInlineElements(text: string): string {
+        // インラインコードの処理（最優先で処理）
+        text = text.replace(/`(.+?)`/g, `<${this.config.code} data-taxonom-code>$1</${this.config.code}>`)
+        
+        // 太字の処理（斜体より先に処理）
+        text = text.replace(/\*\*(.+?)\*\*/g, `<${this.config.bold} data-taxonom-bold>$1</${this.config.bold}>`)
+        
+        // 斜体の処理
+        text = text.replace(/\*(.+?)\*/g, `<${this.config.italic} data-taxonom-italic>$1</${this.config.italic}>`)
+        
         // 画像の処理（リンクより先に処理）
         text = text.replace(/!\[([^\]]*)\]\(([^\)]+)\)/g, (match, alt, src) => {
             return `<${this.config.image} data-taxonom-img src="${src}" alt="${alt}" />`
@@ -233,15 +244,6 @@ class TaxonomParser {
         text = text.replace(/\[([^\]]+)\]\(([^\)]+)\)/g, (match, linkText, href) => {
             return `<${this.config.link} data-taxonom-link href="${href}">${linkText}</${this.config.link}>`
         })
-        
-        // 太字の処理
-        text = text.replace(/\*\*(.+?)\*\*/g, `<${this.config.bold} data-taxonom-bold>$1</${this.config.bold}>`)
-        
-        // 斜体の処理
-        text = text.replace(/\*(.+?)\*/g, `<${this.config.italic} data-taxonom-italic>$1</${this.config.italic}>`)
-        
-        // インラインコードの処理
-        text = text.replace(/`(.+?)`/g, `<${this.config.code} data-taxonom-code>$1</${this.config.code}>`)
         
         return text
     }
@@ -257,6 +259,30 @@ class TaxonomParser {
         }
         
         return text.replace(/[&<>"']/g, char => htmlEscapes[char])
+    }
+
+    // NOTE: コードのシンタックスハイライト処理
+    private highlightCode(code: string, language?: string, options: ParseOptions = {}): string {
+        // ハイライトが無効化されている場合はエスケープのみ
+        if (options.highlightCode === false) {
+            return this.escapeHtml(code)
+        }
+
+        try {
+            if (language && hljs.getLanguage(language)) {
+                // 指定された言語でハイライト
+                const highlighted = hljs.highlight(code, { language })
+                return highlighted.value
+            } else {
+                // 言語自動検出
+                const highlighted = hljs.highlightAuto(code)
+                return highlighted.value
+            }
+        } catch (error) {
+            // ハイライトに失敗した場合はエスケープのみ
+            console.warn('Code highlighting failed:', error)
+            return this.escapeHtml(code)
+        }
     }
 }
 

@@ -23,6 +23,7 @@
         "@osaxyz/taxonom": "file:../taxonom",
         "@osaxyz/taxonom-style": "file:../taxonom-style",
         "destyle.css": "^4.0.1",
+        "highlight.js": "^11.11.1",
         "vue": "^3.3.8"
     },
     "engines": {
