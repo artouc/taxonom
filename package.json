@@ -5,12 +5,11 @@
     "description": "Taxonom モノレポ - 高速マークダウンパーサー",
     "workspaces": [
         "taxonom",
-        "taxonom-style",
-        "playground"
+        "taxonom-style"
     ],
     "scripts": {
         "build": "npm run build --workspaces --if-present",
-        "dev": "npm run dev --workspace=playground",
+        "dev": "cd playground && npm run dev",
         "dev:parser": "npm run dev --workspace=taxonom",
         "dev:style": "npm run dev --workspace=taxonom-style",
         "test": "npm run test --workspaces --if-present",

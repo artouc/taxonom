@@ -1,0 +1,48 @@
+[14:28:54.226] Running build in Washington, D.C., USA (East) – iad1
+[14:28:54.227] Build machine configuration: 4 cores, 8 GB
+[14:28:54.244] Cloning github.com/artouc/taxonom (Branch: main, Commit: df9e645)
+[14:28:54.353] Previous build caches not available
+[14:28:54.675] Cloning completed: 431.000ms
+[14:28:54.965] Running "vercel build"
+[14:28:55.419] Vercel CLI 44.3.0
+[14:28:56.064] Warning: Detected "engines": { "node": ">=16" } in your `package.json` that will automatically upgrade when a new major Node.js Version is released. Learn More: http://vercel.link/node-version
+[14:28:56.068] Running "install" command: `npm install`...
+[14:28:59.967] 
+[14:28:59.967] added 188 packages, and audited 192 packages in 4s
+[14:28:59.967] 
+[14:28:59.967] 43 packages are looking for funding
+[14:28:59.967]   run `npm fund` for details
+[14:28:59.982] 
+[14:28:59.982] 5 moderate severity vulnerabilities
+[14:28:59.983] 
+[14:28:59.983] To address all issues (including breaking changes), run:
+[14:28:59.983]   npm audit fix --force
+[14:28:59.983] 
+[14:28:59.983] Run `npm audit` for details.
+[14:29:00.986] 
+[14:29:00.987] up to date, audited 192 packages in 809ms
+[14:29:00.987] 
+[14:29:00.987] 43 packages are looking for funding
+[14:29:00.987]   run `npm fund` for details
+[14:29:01.002] 
+[14:29:01.002] 5 moderate severity vulnerabilities
+[14:29:01.002] 
+[14:29:01.002] To address all issues (including breaking changes), run:
+[14:29:01.002]   npm audit fix --force
+[14:29:01.002] 
+[14:29:01.002] Run `npm audit` for details.
+[14:29:01.240] 
+[14:29:01.240] > taxonom-playground@0.1.0 build
+[14:29:01.240] > vue-tsc && vite build
+[14:29:01.240] 
+[14:29:02.953] src/components/TaxonomDemo.vue(3,45): error TS2307: Cannot find module '@osaxyz/taxonom' or its corresponding type declarations.
+[14:29:02.966] npm error Lifecycle script `build` failed with error:
+[14:29:02.966] npm error code 2
+[14:29:02.966] npm error path /vercel/path0/playground
+[14:29:02.966] npm error workspace taxonom-playground@0.1.0
+[14:29:02.966] npm error location /vercel/path0/playground
+[14:29:02.967] npm error command failed
+[14:29:02.967] npm error command sh -c vue-tsc && vite build
+[14:29:02.974] Error: Command "npm install && npm run build" exited with 2
+[14:29:03.162] 
+[14:29:05.938] Exiting build container
