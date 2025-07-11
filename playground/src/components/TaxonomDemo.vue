@@ -25,17 +25,17 @@ const markdown_input = ref(`# Taxonom デモ
 上の設定パネルで、マークダウン記法とHTML要素のマッピングを変更できます。`)
 
 const config = ref<TaxonomConfig>({
-    h1: 'h2',
-    h2: 'h3',
-    h3: 'h4',
-    h4: 'h5',
-    h5: 'h6',
-    h6: 'h6',
-    hr: 'hr',
-    bold: 'strong',
-    italic: 'em',
-    code: 'code',
-    codeBlock: 'pre'
+    "#": 'h2',
+    "##": 'h3',
+    "###": 'h4',
+    "####": 'h5',
+    "#####": 'h6',
+    "######": 'h6',
+    "---": 'hr',
+    "**": 'strong',
+    "*": 'em',
+    "`": 'code',
+    "```": 'pre'
 })
 
 const show_config = ref(true)
@@ -65,17 +65,17 @@ onMounted(() => {
 // NOTE: 設定をデフォルトに戻す
 const resetConfig = (): void => {
     config.value = {
-        h1: 'h2',
-        h2: 'h3', 
-        h3: 'h4',
-        h4: 'h5',
-        h5: 'h6',
-        h6: 'h6',
-        hr: 'hr',
-        bold: 'strong',
-        italic: 'em',
-        code: 'code',
-        codeBlock: 'pre'
+        "#": 'h2',
+        "##": 'h3', 
+        "###": 'h4',
+        "####": 'h5',
+        "#####": 'h6',
+        "######": 'h6',
+        "---": 'hr',
+        "**": 'strong',
+        "*": 'em',
+        "`": 'code',
+        "```": 'pre'
     }
 }
 
