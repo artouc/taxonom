@@ -3,6 +3,9 @@
     "version": "0.1.0",
     "description": "デフォルトスタイル for @osaxyz/taxonom",
     "main": "dist/index.css",
+    "exports": {
+        ".": "./dist/index.css"
+    },
     "files": [
         "dist"
     ],

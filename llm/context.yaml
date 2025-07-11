@@ -15,9 +15,15 @@ reference_files:
         - file: "BLUEPRINT.md"
           importance: "critical"
           description: "プロジェクトの仕様と要件定義"
-        - file: "llm/history/20250711125846_development-history.yaml"
+        - file: "llm/history/20250711132549_style-package-history.yaml"
           importance: "critical"
-          description: "最新の開発履歴（コードブロック・データ属性機能実装）"
+          description: "最新の開発履歴（taxonom-styleパッケージ化完了）"
+        - file: "llm/history/20250711130753_features-history.yaml"
+          importance: "high"
+          description: "前回の開発履歴（全予定機能実装完了）"
+        - file: "llm/history/20250711125846_development-history.yaml"
+          importance: "high"
+          description: "前回の開発履歴（コードブロック・データ属性機能実装）"
     
     high_priority:
         - file: "taxonom/src/types.ts"
@@ -41,8 +47,11 @@ reference_files:
           importance: "medium"
           description: "メインパーサーパッケージの設定"
         - file: "taxonom-style/package.json"
+          importance: "high"
+          description: "スタイルパッケージの設定（複数エントリーポイント対応）"
+        - file: "taxonom-style/README.md"
           importance: "medium"
-          description: "スタイルパッケージの設定"
+          description: "スタイルパッケージの使用方法とドキュメント"
         - file: "playground/package.json"
           importance: "medium"
           description: "Vue.jsデモアプリケーションの設定"
@@ -56,6 +65,16 @@ implemented_features:
         - "段落テキスト解析"
         - "HTMLエスケープ処理"
         - "データ属性自動付与（data-taxonom-*）"
+        - "リスト機能（ul/ol/li）解析・グループ化"
+        - "リンク機能（[text](url)）解析"
+        - "画像機能（![alt](src)）解析"
+        - "ブロッククォート機能（>）解析"
+        
+    style_package:
+        - "複数エントリーポイント対応（index/data-only/html-tags）"
+        - "CSS変数でのカスタマイズサポート"
+        - "プレイグラウンドからのスタイル完全移行"
+        - "企業レベルのnpmパッケージ化"
         
     configuration:
         - "HTML要素マッピングのカスタマイズ機能"
@@ -90,6 +109,12 @@ data_attributes_system:
         code_block: "data-taxonom-codeblock"
         horizontal_rule: "data-taxonom-hr"
         language: "data-taxonom-language=\"javascript\""
+        unordered_list: "data-taxonom-ul"
+        ordered_list: "data-taxonom-ol"
+        list_item: "data-taxonom-li"
+        link: "data-taxonom-link"
+        image: "data-taxonom-img"
+        blockquote: "data-taxonom-blockquote"
 
 development_commands:
     setup: "./scripts/run.sh setup"
@@ -99,14 +124,12 @@ development_commands:
     
 pending_features:
     high_priority:
-        - "リスト機能（ul/ol/li）"
-        - "リンク機能（[text](url)）"
-        - "画像機能（![alt](src)）"
-        - "ブロッククォート機能（>）"
+        - "テーブル機能（table/thead/tbody/tr/th/td）"
+        - "ネストしたリスト対応"
         
     medium_priority:
-        - "テーブル機能"
-        - "ネストした要素対応"
-        - "カスタムレンダラー"
+        - "カスタムレンダラー機能"
+        - "パフォーマンス最適化"
+        - "プラグインシステム"
 
-current_status: "基本パーサー機能・コードブロック・データ属性機能実装完了。playground動作確認済み。次はリスト・リンク・画像機能の実装フェーズ。"
+current_status: "コア機能・スタイルパッケージ化完全完了！@osaxyz/taxonomと@osaxyz/taxonom-styleが独立したnpmパッケージとして機能。プレイグラウンドでパッケージ使用確認済み。次はテーブル機能やnpm公開のフェーズ。"

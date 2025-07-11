@@ -16,6 +16,7 @@ export interface TaxonomConfig {
     image?: string
     blockquote?: string
     list?: string
+    orderedList?: string
     listItem?: string
     table?: string
     tableHeader?: string
@@ -42,4 +43,6 @@ export type MarkdownToken = {
     title?: string
     alt?: string
     language?: string
+    items?: MarkdownToken[]
+    ordered?: boolean
 }

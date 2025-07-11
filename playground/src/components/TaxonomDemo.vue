@@ -25,20 +25,24 @@ const markdown_input = ref(`# Taxonom デモ
 上の設定パネルで、マークダウン記法とHTML要素のマッピングを変更できます。`)
 
 const config = ref<TaxonomConfig>({
-    "#": 'h2',
-    "##": 'h3',
-    "###": 'h4',
-    "####": 'h5',
-    "#####": 'h6',
-    "######": 'h6',
-    "---": 'hr',
-    "**": 'strong',
-    "*": 'em',
-    "`": 'code',
-    "```": 'pre'
+    h1: 'h2',
+    h2: 'h3',
+    h3: 'h4',
+    h4: 'h5',
+    h5: 'h6',
+    h6: 'h6',
+    hr: 'hr',
+    bold: 'strong',
+    italic: 'em',
+    code: 'code',
+    codeBlock: 'pre',
+    link: 'a',
+    image: 'img',
+    blockquote: 'blockquote',
+    list: 'ul',
+    orderedList: 'ol',
+    listItem: 'li'
 })
-
-const show_config = ref(true)
 
 // 計算プロパティ
 const parsed_html = computed(() => {
@@ -62,20 +66,32 @@ onMounted(() => {
     Taxonom.initialize(config.value)
 })
 
+// NOTE: 設定値を更新する関数
+const updateConfigValue = (key: string, value: string): void => {
+    const typedKey = key as keyof TaxonomConfig
+    config.value[typedKey] = value as any
+}
+
 // NOTE: 設定をデフォルトに戻す
 const resetConfig = (): void => {
     config.value = {
-        "#": 'h2',
-        "##": 'h3', 
-        "###": 'h4',
-        "####": 'h5',
-        "#####": 'h6',
-        "######": 'h6',
-        "---": 'hr',
-        "**": 'strong',
-        "*": 'em',
-        "`": 'code',
-        "```": 'pre'
+        h1: 'h2',
+        h2: 'h3', 
+        h3: 'h4',
+        h4: 'h5',
+        h5: 'h6',
+        h6: 'h6',
+        hr: 'hr',
+        bold: 'strong',
+        italic: 'em',
+        code: 'code',
+        codeBlock: 'pre',
+        link: 'a',
+        image: 'img',
+        blockquote: 'blockquote',
+        list: 'ul',
+        orderedList: 'ol',
+        listItem: 'li'
     }
 }
 
@@ -96,6 +112,29 @@ const loadSample = (): void => {
 - **太字テキスト**
 - *斜体テキスト*
 - \`Inline Code\`
+
+### リスト機能
+
+#### 無序リスト
+- アイテム1
+- アイテム2
+- アイテム3
+
+#### 順序付きリスト
+1. 第一項目
+2. 第二項目
+3. 第三項目
+
+### リンクと画像
+
+- [公式サイト](https://osa.xyz)
+- [Vue.js](https://vuejs.org)
+- ![Dummy Image](https://placehold.jp/150x150.png)
+
+### ブロッククォート
+
+> これはブロッククォートの例です。
+> **重要な情報**や*強調*したい内容を表示できます。
 
 ### コードブロック
 
@@ -128,7 +167,15 @@ const user: User = {
 ### 複雑な例
 
 **太字の中に*斜体*を含む**例や、\`console.log('Hello World')\`のような
-インラインコードとコードブロックを組み合わせた表現も可能です。`
+インラインコードとコードブロックを組み合わせた表現も可能です。
+
+#### 新機能の組み合わせ
+
+1. **リスト**に[リンク](https://example.com)を含める
+2. *斜体*で![placeholder](https://via.placeholder.com/100x30)を表示
+3. ブロッククォート内でコード例を参照
+
+> 全ての機能が**統合的**に動作し、\`data-taxonom-*\`属性で簡単にスタイリング可能です。`
 }
 </script>
 
@@ -153,9 +200,10 @@ const user: User = {
                 )
                     label.c-config__label {{ key }}
                     input.c-config__input(
-                        v-model="config[key]"
+                        :value="config[key]"
+                        @input="(event) => updateConfigValue(key, event.target.value)"
                         type="text"
-                        :placeholder="value"
+                        :placeholder="String(value)"
                     )
     
     .p-demo__editor
@@ -297,85 +345,7 @@ const user: User = {
         line-height: 1.6
         resize: vertical
         
-        // プレビュー内のスタイル（データ属性セレクター）
-        :deep([data-taxonom-h1])
-            font-size: osa.harmonic(3)
-            margin-top: osa.fibo(2)
-            margin-bottom: osa.fibo(1)
-            color: var(--color-gray-900, #111827)
-            border-bottom: 2px solid var(--color-gray-300, #d1d5db)
-            
-        :deep([data-taxonom-h2])
-            font-size: osa.harmonic(2)
-            margin-top: osa.fibo(2)
-            margin-bottom: osa.fibo(1)
-            color: var(--color-gray-900, #111827)
-            
-        :deep([data-taxonom-h3])
-            font-size: osa.harmonic(1)
-            margin-top: osa.fibo(2)
-            margin-bottom: osa.fibo(1)
-            color: var(--color-gray-800, #1f2937)
-            
-        :deep([data-taxonom-h4])
-            font-size: osa.harmonic(0)
-            margin-top: osa.fibo(1)
-            margin-bottom: osa.fibo(0)
-            color: var(--color-gray-800, #1f2937)
-            
-        :deep([data-taxonom-h5])
-            font-size: osa.harmonic(-1)
-            margin-top: osa.fibo(1)
-            margin-bottom: osa.fibo(0)
-            color: var(--color-gray-800, #1f2937)
-            
-        :deep([data-taxonom-h6])
-            font-size: osa.harmonic(-1)
-            margin-top: osa.fibo(1)
-            margin-bottom: osa.fibo(0)
-            color: var(--color-gray-800, #1f2937)
-            
-        :deep([data-taxonom-p])
-            margin-top: osa.fibo(1)
-            margin-bottom: osa.fibo(1)
-            color: var(--color-gray-700, #374151)
-            line-height: 1.6
-            
-        :deep([data-taxonom-bold])
-            font-weight: 700
-            color: var(--color-gray-900, #111827)
-            
-        :deep([data-taxonom-italic])
-            font-style: italic
-            
-        :deep([data-taxonom-code])
-            padding: osa.fibo(-2) osa.fibo(-1)
-            background: var(--color-gray-100, #f3f4f6)
-            border-radius: 3px
-            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace
-            font-size: 0.9em
-            
-        :deep([data-taxonom-hr])
-            margin: osa.fibo(2) 0
-            border: none
-            border-top: 2px solid var(--color-gray-300, #d1d5db)
-            
-        :deep([data-taxonom-codeblock])
-            margin: osa.fibo(2) 0
-            padding: osa.fibo(1)
-            background: var(--color-gray-900, #111827)
-            border-radius: 6px
-            overflow-x: auto
-            
-            code
-                display: block
-                color: var(--color-green-400, #4ade80)
-                font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace
-                font-size: osa.harmonic(-1)
-                line-height: 1.5
-                background: none
-                padding: 0
-                border-radius: 0
+        // NOTE: スタイルは@osaxyz/taxonom-styleパッケージで提供
         
     &__code
         flex: 1

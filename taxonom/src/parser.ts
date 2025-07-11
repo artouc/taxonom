@@ -21,6 +21,7 @@ class TaxonomParser {
             image: 'img',
             blockquote: 'blockquote',
             list: 'ul',
+            orderedList: 'ol',
             listItem: 'li',
             table: 'table',
             tableHeader: 'th',
@@ -98,6 +99,34 @@ class TaxonomParser {
                 continue
             }
 
+            // ブロッククォートの処理
+            const blockquoteMatch = line.match(/^>\s*(.*)$/)
+            if (blockquoteMatch) {
+                tokens.push({
+                    type: 'blockquote',
+                    content: blockquoteMatch[1]
+                })
+                continue
+            }
+
+            // リストアイテムの処理
+            const unorderedListMatch = line.match(/^[\s]*[-*+]\s+(.+)$/)
+            const orderedListMatch = line.match(/^[\s]*(\d+)\.\s+(.+)$/)
+            
+            if (unorderedListMatch || orderedListMatch) {
+                const content = unorderedListMatch ? unorderedListMatch[1] : orderedListMatch![2]
+                const isOrdered = !!orderedListMatch
+                const indent = line.match(/^(\s*)/)?.[1]?.length || 0
+                
+                tokens.push({
+                    type: 'listItem',
+                    content,
+                    ordered: isOrdered,
+                    level: Math.floor(indent / 2)
+                })
+                continue
+            }
+
             // 通常のテキスト
             if (line.trim()) {
                 tokens.push({
@@ -107,7 +136,40 @@ class TaxonomParser {
             }
         }
 
-        return tokens
+        return this.processListGroups(tokens)
+    }
+
+    // NOTE: リストアイテムをグループ化
+    private processListGroups(tokens: MarkdownToken[]): MarkdownToken[] {
+        const result: MarkdownToken[] = []
+        let i = 0
+        
+        while (i < tokens.length) {
+            const token = tokens[i]
+            
+            if (token.type === 'listItem') {
+                const listItems: MarkdownToken[] = []
+                const isOrdered = token.ordered
+                
+                // 連続するリストアイテムを収集
+                while (i < tokens.length && tokens[i].type === 'listItem' && tokens[i].ordered === isOrdered) {
+                    listItems.push(tokens[i])
+                    i++
+                }
+                
+                result.push({
+                    type: 'list',
+                    content: '',
+                    ordered: isOrdered,
+                    items: listItems
+                })
+            } else {
+                result.push(token)
+                i++
+            }
+        }
+        
+        return result
     }
 
     // NOTE: トークンをHTMLに変換
@@ -126,6 +188,17 @@ class TaxonomParser {
                     const languageClass = token.language ? ` class="language-${token.language}"` : ''
                     const languageDataAttr = token.language ? ` data-taxonom-language="${token.language}"` : ''
                     return `<${this.config.codeBlock} data-taxonom-codeblock${languageDataAttr}><code${languageClass}>${this.escapeHtml(token.content)}</code></${this.config.codeBlock}>`
+                
+                case 'blockquote':
+                    return `<${this.config.blockquote} data-taxonom-blockquote>${this.processInlineElements(token.content)}</${this.config.blockquote}>`
+                
+                case 'list':
+                    const listTag = token.ordered ? this.config.orderedList : this.config.list
+                    const listDataAttr = token.ordered ? 'data-taxonom-ol' : 'data-taxonom-ul'
+                    const listItems = token.items?.map(item => 
+                        `<${this.config.listItem} data-taxonom-li>${this.processInlineElements(item.content)}</${this.config.listItem}>`
+                    ).join('\n') || ''
+                    return `<${listTag} ${listDataAttr}>\n${listItems}\n</${listTag}>`
                 
                 case 'paragraph':
                     return `<p data-taxonom-p>${this.processInlineElements(token.content)}</p>`
@@ -151,6 +224,16 @@ class TaxonomParser {
 
     // NOTE: インライン要素（太字、斜体など）を処理
     private processInlineElements(text: string): string {
+        // 画像の処理（リンクより先に処理）
+        text = text.replace(/!\[([^\]]*)\]\(([^\)]+)\)/g, (match, alt, src) => {
+            return `<${this.config.image} data-taxonom-img src="${src}" alt="${alt}" />`
+        })
+        
+        // リンクの処理
+        text = text.replace(/\[([^\]]+)\]\(([^\)]+)\)/g, (match, linkText, href) => {
+            return `<${this.config.link} data-taxonom-link href="${href}">${linkText}</${this.config.link}>`
+        })
+        
         // 太字の処理
         text = text.replace(/\*\*(.+?)\*\*/g, `<${this.config.bold} data-taxonom-bold>$1</${this.config.bold}>`)
         

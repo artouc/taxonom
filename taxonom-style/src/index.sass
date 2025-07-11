@@ -1,90 +1,153 @@
-// Taxonom デフォルトスタイル
-// NOTE: 基本的なマークダウン要素のスタイリング
+// Taxonom Data Attributes スタイル
+// NOTE: data-taxonom-* 属性用のスタイリング
+
+// 色定義（CSS変数フォールバック付き）
+$color-primary: var(--color-primary, #2563eb)
+$color-primary-50: var(--color-primary-50, #eff6ff)
+$color-primary-600: var(--color-primary-600, #1d4ed8)
+$color-gray-50: var(--color-gray-50, #f9fafb)
+$color-gray-100: var(--color-gray-100, #f3f4f6)
+$color-gray-300: var(--color-gray-300, #d1d5db)
+$color-gray-700: var(--color-gray-700, #374151)
+$color-gray-800: var(--color-gray-800, #1f2937)
+$color-gray-900: var(--color-gray-900, #111827)
+
+// フォント設定
+$font-mono: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace
 
 // 見出し
-h1, h2, h3, h4, h5, h6
-    margin-top: 1.5em
-    margin-bottom: 0.5em
+[data-taxonom-h1]
+    font-size: 2.25rem
+    margin-top: 2rem
+    margin-bottom: 1rem
+    color: $color-gray-900
+    border-bottom: 2px solid $color-gray-300
+    font-weight: 700
+    line-height: 1.25
+    
+[data-taxonom-h2]
+    font-size: 1.875rem
+    margin-top: 2rem
+    margin-bottom: 1rem
+    color: $color-gray-900
+    font-weight: 600
+    line-height: 1.25
+    
+[data-taxonom-h3]
+    font-size: 1.5rem
+    margin-top: 2rem
+    margin-bottom: 1rem
+    color: $color-gray-800
+    font-weight: 600
+    line-height: 1.25
+    
+[data-taxonom-h4]
+    font-size: 1.25rem
+    margin-top: 1rem
+    margin-bottom: 0.5rem
+    color: $color-gray-800
+    font-weight: 600
+    line-height: 1.25
+    
+[data-taxonom-h5]
+    font-size: 1.125rem
+    margin-top: 1rem
+    margin-bottom: 0.5rem
+    color: $color-gray-800
+    font-weight: 600
+    line-height: 1.25
+    
+[data-taxonom-h6]
+    font-size: 1rem
+    margin-top: 1rem
+    margin-bottom: 0.5rem
+    color: $color-gray-800
     font-weight: 600
     line-height: 1.25
 
-h1
-    font-size: 2.25em
-    border-bottom: 1px solid #e5e7eb
-
-h2
-    font-size: 1.875em
-    border-bottom: 1px solid #e5e7eb
-
-h3
-    font-size: 1.5em
-
-h4
-    font-size: 1.25em
-
-h5
-    font-size: 1.125em
-
-h6
-    font-size: 1em
-
-// パラグラフ
-p
-    margin-top: 1em
-    margin-bottom: 1em
+// 段落
+[data-taxonom-p]
+    margin-top: 1rem
+    margin-bottom: 1rem
+    color: $color-gray-700
     line-height: 1.6
 
-// 強調
-strong
-    font-weight: 600
+// インライン要素
+[data-taxonom-bold]
+    font-weight: 700
+    color: $color-gray-900
 
-em
+[data-taxonom-italic]
     font-style: italic
 
-// インラインコード
-code
+[data-taxonom-code]
     padding: 0.125rem 0.25rem
-    background-color: #f3f4f6
-    border-radius: 0.25rem
-    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
-    font-size: 0.875em
+    background: $color-gray-100
+    border-radius: 3px
+    font-family: $font-mono
+    font-size: 0.9em
 
 // 水平線
-hr
+[data-taxonom-hr]
     margin: 2rem 0
     border: none
-    border-top: 1px solid #e5e7eb
+    border-top: 2px solid $color-gray-300
+
+// コードブロック
+[data-taxonom-codeblock]
+    margin: 2rem 0
+    padding: 1rem
+    background: $color-gray-900
+    border-radius: 6px
+    overflow-x: auto
+    
+    code
+        display: block
+        color: #4ade80
+        font-family: $font-mono
+        font-size: 0.875rem
+        line-height: 1.5
+        background: none
+        padding: 0
+        border-radius: 0
 
 // リスト
-ul, ol
-    margin-top: 1em
-    margin-bottom: 1em
-    padding-left: 2em
+[data-taxonom-ul]
+    margin: 1rem 0
+    padding-left: 2rem
+    list-style-type: disc
 
-li
-    margin-top: 0.25em
-    margin-bottom: 0.25em
+[data-taxonom-ol]
+    margin: 1rem 0
+    padding-left: 2rem
+    list-style-type: decimal
 
-// テーブル
-table
-    border-collapse: collapse
-    width: 100%
-    margin-top: 1em
-    margin-bottom: 1em
+[data-taxonom-li]
+    margin: 0.25rem 0
+    line-height: 1.6
+    color: $color-gray-700
 
-th, td
-    border: 1px solid #e5e7eb
-    padding: 0.5rem
-    text-align: left
+// リンク
+[data-taxonom-link]
+    color: $color-primary
+    text-decoration: underline
+    
+    &:hover
+        color: $color-primary-600
+        text-decoration: none
 
-th
-    background-color: #f9fafb
-    font-weight: 600
+// 画像
+[data-taxonom-img]
+    max-width: 100%
+    height: auto
+    border-radius: 4px
+    margin: 0.5rem 0
 
 // ブロッククォート
-blockquote
-    margin: 1em 0
-    padding-left: 1rem
-    border-left: 4px solid #e5e7eb
-    color: #6b7280
+[data-taxonom-blockquote]
+    margin: 2rem 0
+    padding: 1rem 2rem
+    border-left: 4px solid $color-primary
+    background: $color-gray-50
     font-style: italic
+    color: #6b7280
