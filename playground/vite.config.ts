@@ -13,13 +13,6 @@ export default defineConfig({
             }
         }
     })],
-    css: {
-        preprocessorOptions: {
-            sass: {
-                // NOTE: グローバルな@useは削除し、各コンポーネントで個別に読み込む
-            }
-        }
-    },
     resolve: {
         alias: {
             '@': resolve(__dirname, 'src')

@@ -1,9 +1,8 @@
 {
-  "buildCommand": "cd playground && npm ci && npm run build",
-  "outputDirectory": "playground/dist",
-  "installCommand": "cd playground && npm ci",
   "framework": "vite",
-  "regions": ["iad1"],
+  "buildCommand": "npm install && npm run build",
+  "outputDirectory": "dist",
+  "installCommand": "npm install",
   "rewrites": [
     {
       "source": "/(.*)",
@@ -23,7 +22,7 @@
           "value": "DENY"
         },
         {
-          "key": "X-XSS-Protection",
+          "key": "X-XSS-Protection", 
           "value": "1; mode=block"
         }
       ]

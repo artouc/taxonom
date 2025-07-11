@@ -1,0 +1,12 @@
+[14:25:17.014] Running build in Washington, D.C., USA (East) – iad1
+[14:25:17.015] Build machine configuration: 4 cores, 8 GB
+[14:25:17.031] Cloning github.com/artouc/taxonom (Branch: main, Commit: 1c9cfcc)
+[14:25:17.131] Previous build caches not available
+[14:25:17.494] Cloning completed: 463.000ms
+[14:25:17.776] Running "vercel build"
+[14:25:18.219] Vercel CLI 44.3.0
+[14:25:18.797] Warning: Detected "engines": { "node": ">=16" } in your `package.json` that will automatically upgrade when a new major Node.js Version is released. Learn More: http://vercel.link/node-version
+[14:25:18.801] Running "install" command: `cd playground && npm ci`...
+[14:25:18.805] sh: line 1: cd: playground: No such file or directory
+[14:25:18.808] Error: Command "cd playground && npm ci" exited with 1
+[14:25:19.021] 

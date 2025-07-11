@@ -47,7 +47,7 @@ npm install @osaxyz/taxonom-style
 - data-taxonom属性専用設計
 
 ### 🎮 [playground](./playground/)
-Vue.js デモアプリケーション
+Vue.js デモアプリケーション - [ライブデモ](https://taxonom.vercel.app)
 
 ```bash
 cd playground && npm install && npm run dev
@@ -57,6 +57,8 @@ cd playground && npm install && npm run dev
 - 設定パネル
 - 3カラムレイアウト
 - レスポンシブ対応
+
+> **Vercelデプロイ**: Root Directory を `playground` に設定してデプロイしてください。詳細は [DEPLOYMENT.md](./DEPLOYMENT.md) を参照。
 
 ## クイックスタート
 
