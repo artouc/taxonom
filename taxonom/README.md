@@ -567,33 +567,9 @@ const result: ParseResult = Taxonom.parseWithMetadata(markdown, options)
 
 **@osaxyz カスタムライセンス** - 詳細は [LICENSE](LICENSE) ファイルを参照
 
-### 利用に関する重要な注意事項
-
-**非営利利用の場合:**
-- インストール・使用・改変: ✅ 許可
-- 再配布: ❌ 禁止
-
-**営利利用の場合:**
-- 事前に著作権者（大内あら生）への許可取得が必要です
-- 許可条件には使用料の支払いも含まれる場合があります
-
-**著作権者の権利:**
-- 本ソフトウェアが組み込まれたプロダクトについて、著作権者はいつでも利用の差し止めを要求する権利を有します
-- 利用者は差し止め要求に72時間以内に応じる義務があります
-
-営利利用に関するお問い合わせ: support@osa.xyz
-
 ## 関連パッケージ
 
 - [@osaxyz/taxonom-style](https://www.npmjs.com/package/@osaxyz/taxonom-style) - デフォルトスタイルパッケージ
 - [highlight.js](https://www.npmjs.com/package/highlight.js) - シンタックスハイライト（内部依存）
-
-## リンク
-
-- [GitHub Repository](https://github.com/artouc/taxonom)
-- [NPM Package](https://www.npmjs.com/package/@osaxyz/taxonom)
-- [Demo & Playground](https://taxonom.osa.xyz)
-
----
 
 Made with ❤️ by [大内あら生 (Ouchi Arata)](https://osa.xyz)
