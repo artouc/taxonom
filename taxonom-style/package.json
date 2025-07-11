@@ -1,0 +1,41 @@
+{
+    "name": "@osaxyz/taxonom-style",
+    "version": "0.1.0",
+    "description": "デフォルトスタイル for @osaxyz/taxonom",
+    "main": "dist/index.css",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "sass src/index.sass dist/index.css --style=compressed",
+        "dev": "sass src/index.sass dist/index.css --watch",
+        "typecheck": "echo 'No TypeScript files to check'"
+    },
+    "keywords": [
+        "css",
+        "sass",
+        "style",
+        "taxonom",
+        "markdown"
+    ],
+    "author": "OSA <noreply@osaxyz.com>",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/artouc/taxonom.git",
+        "directory": "taxonom-style"
+    },
+    "bugs": {
+        "url": "https://github.com/artouc/taxonom/issues"
+    },
+    "homepage": "https://github.com/artouc/taxonom#readme",
+    "devDependencies": {
+        "sass": "^1.69.5"
+    },
+    "peerDependencies": {
+        "@osaxyz/taxonom": "^0.1.0"
+    },
+    "engines": {
+        "node": ">=16"
+    }
+}

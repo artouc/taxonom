@@ -1,0 +1,39 @@
+# プロジェクトコンテキスト管理
+# 他のエージェントが作業を引き継ぐ際に参照すべきファイル一覧
+
+project_info:
+    name: "Taxonom"
+    description: "Vue.js向け高速マークダウンパーサー"
+    type: "モノレポ"
+    
+reference_files:
+    high_priority:
+        - file: "CLAUDE.md"
+          importance: "critical"
+          description: "プロジェクト全体のルールと規約"
+        - file: "BLUEPRINT.md"
+          importance: "critical"
+          description: "プロジェクトの仕様と要件定義"
+    
+    medium_priority:
+        - file: "package.json"
+          importance: "high"
+          description: "ワークスペース設定とルートパッケージ情報"
+        - file: "taxonom/package.json"
+          importance: "high"
+          description: "メインパーサーパッケージの設定"
+        - file: "taxonom-style/package.json"
+          importance: "high"
+          description: "スタイルパッケージの設定"
+        - file: "playground/package.json"
+          importance: "high"
+          description: "デモアプリケーションの設定"
+
+structure_overview:
+    - "taxonom/": "メインのマークダウンパーサーパッケージ"
+    - "taxonom-style/": "デフォルトスタイルパッケージ"
+    - "playground/": "Nuxt.jsデモアプリケーション"
+    - "llm/": "LLM作業管理ディレクトリ"
+    - "scripts/": "実行スクリプト管理"
+
+current_status: "初期セットアップ完了。基本的なディレクトリ構造とpackage.json設定済み"

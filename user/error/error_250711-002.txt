@@ -1,0 +1,11 @@
+[plugin:vite:import-analysis] Failed to resolve entry for package "@osaxyz/taxonom". The package may have incorrect main/module/exports specified in its package.json.
+/Users/arataouchi/Dropbox/workspace/@osa/taxonom/playground/src/components/TaxonomDemo.vue
+    at packageEntryFailure (file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/playground/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:46638:15)
+    at resolvePackageEntry (file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/playground/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:46635:3)
+    at tryNodeResolve (file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/playground/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:46451:16)
+    at ResolveIdContext.resolveId (file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/playground/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:46201:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async PluginContainer.resolveId (file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/playground/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49017:22)
+    at async TransformPluginContext.resolve (file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/playground/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:49178:15)
+    at async normalizeUrl (file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/playground/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:64284:26)
+    at async file:///Users/arataouchi/Dropbox/workspace/@osa/taxonom/playground/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:64423:39

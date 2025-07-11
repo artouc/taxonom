@@ -1,0 +1,82 @@
+# プロジェクトセットアップ作業履歴
+# 作業日時: 2025-07-11 09:48:25
+
+scope: "setup"
+summary: "Taxonomプロジェクトの初期セットアップ完了"
+
+completed_tasks:
+    - task: "プロジェクトの現在の構造を確認し、必要なディレクトリ構造を把握する"
+      details: "CLAUDE.mdとBLUEPRINT.mdを読み、モノレポ構成の要件を理解"
+      
+    - task: "モノレポ構造の基本ディレクトリ（taxonom、taxonom-style、playground）を作成する"
+      details: "各パッケージ用のディレクトリとsrcフォルダを作成"
+      
+    - task: "各パッケージのpackage.jsonファイルを作成する"
+      details: |
+        - taxonom/package.json: メインパーサーパッケージ設定
+        - taxonom-style/package.json: スタイルパッケージ設定  
+        - playground/package.json: Nuxt.jsデモアプリ設定
+        
+    - task: "ルートのpackage.jsonとワークスペース設定を作成する"
+      details: "npmワークスペース設定とプロジェクト全体の管理スクリプト定義"
+      
+    - task: "必要なLLMディレクトリ構造を作成する"
+      details: "llm/structure/, llm/history/, llm/context.yamlを作成"
+      
+    - task: "scriptsディレクトリとrun.shファイルを作成する"
+      details: "CLAUDE.md規約に従い、単一ファイルでサブコマンド管理を実装"
+      
+    - task: ".gitignoreファイルを作成する"
+      details: "Node.js、ビルド成果物、IDE設定等を除外するよう設定"
+      
+    - task: "README.mdファイルを作成する"
+      details: "プロジェクト概要、セットアップ手順、使用方法を記載"
+
+created_files:
+    core_files:
+        - "package.json" # ワークスペース設定
+        - ".gitignore"
+        - "README.md"
+        
+    package_configs:
+        - "taxonom/package.json"
+        - "taxonom-style/package.json" 
+        - "playground/package.json"
+        
+    management_files:
+        - "scripts/run.sh"
+        - "llm/context.yaml"
+        - "llm/history/20250711094825_setup-history.yaml"
+
+directory_structure:
+    - "taxonom/src/"
+    - "taxonom-style/src/"
+    - "playground/src/"
+    - "llm/structure/"
+    - "llm/history/"
+    - "scripts/"
+
+key_decisions:
+    - technology_stack: "Nuxt.js + TypeScript + Pug + Sass（CLAUDE.md規約準拠）"
+    - architecture: "モノレポ構造でパーサーとスタイルを分離"
+    - package_naming: "@osaxyz/taxonom, @osaxyz/taxonom-style"
+    - github_repository: "https://github.com/artouc/taxonom"
+    - versioning: "セマンティックバージョニング採用（0.1.0から開始）"
+
+next_steps:
+    immediate:
+        - "依存関係のインストール: ./scripts/run.sh install"
+        - "開発環境の確認: ./scripts/run.sh dev"
+        
+    development_phase:
+        - "taxonomパッケージのコア実装"
+        - "taxonom-styleパッケージのデフォルトスタイル作成"
+        - "playgroundでのデモアプリケーション実装"
+        
+    build_and_test:
+        - "Rollup設定とビルドパイプライン構築"
+        - "Vitestテスト環境構築"
+        - "TypeScript設定とタイプチェック"
+
+status: "完了"
+notes: "CLAUDE.mdとBLUEPRINT.mdの要件に従い、完全な初期セットアップが完了。次フェーズでの開発開始準備完了。"

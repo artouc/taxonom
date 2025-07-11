@@ -1,0 +1,51 @@
+{
+    "name": "@osaxyz/taxonom",
+    "version": "0.1.0",
+    "type": "module",
+    "description": "高速なマークダウンパーサー for Vue.js",
+    "main": "dist/index.js",
+    "module": "dist/index.esm.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "rollup -c",
+        "dev": "rollup -c -w",
+        "test": "vitest",
+        "test:coverage": "vitest --coverage",
+        "typecheck": "tsc --noEmit"
+    },
+    "keywords": [
+        "markdown",
+        "parser",
+        "vue",
+        "vue3",
+        "nuxt",
+        "headless"
+    ],
+    "author": "OSA <noreply@osaxyz.com>",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/artouc/taxonom.git",
+        "directory": "taxonom"
+    },
+    "bugs": {
+        "url": "https://github.com/artouc/taxonom/issues"
+    },
+    "homepage": "https://github.com/artouc/taxonom#readme",
+    "devDependencies": {
+        "@rollup/plugin-typescript": "^11.1.5",
+        "@types/node": "^20.10.0",
+        "rollup": "^4.6.1",
+        "typescript": "^5.3.2",
+        "vitest": "^1.0.0"
+    },
+    "peerDependencies": {
+        "vue": "^3.0.0"
+    },
+    "engines": {
+        "node": ">=16"
+    }
+}

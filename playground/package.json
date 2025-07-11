@@ -1,0 +1,30 @@
+{
+    "name": "taxonom-playground",
+    "private": true,
+    "version": "0.1.0",
+    "description": "Taxonom デモ・プレイグラウンド",
+    "scripts": {
+        "dev": "vite",
+        "build": "vue-tsc && vite build",
+        "preview": "vite preview",
+        "typecheck": "vue-tsc --noEmit"
+    },
+    "devDependencies": {
+        "@osaxyz/universtyle": "^1.0.0",
+        "@vitejs/plugin-vue": "^4.5.0",
+        "pug": "^3.0.2",
+        "sass": "^1.69.5",
+        "typescript": "^5.3.2",
+        "vite": "^5.0.0",
+        "vue-tsc": "^2.0.0"
+    },
+    "dependencies": {
+        "@osaxyz/taxonom": "file:../taxonom",
+        "@osaxyz/taxonom-style": "file:../taxonom-style",
+        "destyle.css": "^4.0.1",
+        "vue": "^3.3.8"
+    },
+    "engines": {
+        "node": ">=16"
+    }
+}
