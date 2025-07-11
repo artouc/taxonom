@@ -1,0 +1,20 @@
+[16:16:24.355] Running build in Washington, D.C., USA (East) – iad1
+[16:16:24.355] Build machine configuration: 4 cores, 8 GB
+[16:16:24.369] Cloning github.com/artouc/taxonom (Branch: main, Commit: 84d0cbb)
+[16:16:24.615] Cloning completed: 246.000ms
+[16:16:24.790] Restored build cache from previous deployment (AGC1ho6QuQuftNua1XiQiWjx47ZT)
+[16:16:25.089] Running "vercel build"
+[16:16:25.567] Vercel CLI 44.3.0
+[16:16:26.420] Warning: Detected "engines": { "node": ">=16" } in your `package.json` that will automatically upgrade when a new major Node.js Version is released. Learn More: http://vercel.link/node-version
+[16:16:26.423] Running "install" command: `npm install --production=false`...
+[16:16:26.857] npm warn config production Use `--omit=dev` instead.
+[16:16:27.571] npm warn tarball tarball data for @osaxyz/taxonom@https://registry.npmjs.org/@osaxyz/taxonom/-/taxonom-0.2.3.tgz (sha512-nR6UNTNoxyK/DkAB1VcKtX4lcgqxjJXPvwXFk3uN4KV6B9djdwyVFQardKl7RBcJrw5QcO4gg/xThCrC2IwUEg==) seems to be corrupted. Trying again.
+[16:16:27.620] npm warn tarball tarball data for @osaxyz/taxonom@https://registry.npmjs.org/@osaxyz/taxonom/-/taxonom-0.2.3.tgz (sha512-nR6UNTNoxyK/DkAB1VcKtX4lcgqxjJXPvwXFk3uN4KV6B9djdwyVFQardKl7RBcJrw5QcO4gg/xThCrC2IwUEg==) seems to be corrupted. Trying again.
+[16:16:27.776] npm warn tarball tarball data for @osaxyz/taxonom-style@https://registry.npmjs.org/@osaxyz/taxonom-style/-/taxonom-style-0.2.3.tgz (sha512-ARxJHU9zcnOBiyXt6g3PnUIUM2iIgD8Uw48xX37wEFfKdk2l7I1TRiNb0U0ufSJMJR5311GUqCoBlylbhlPx5Q==) seems to be corrupted. Trying again.
+[16:16:27.810] npm warn tarball tarball data for @osaxyz/taxonom-style@https://registry.npmjs.org/@osaxyz/taxonom-style/-/taxonom-style-0.2.3.tgz (sha512-ARxJHU9zcnOBiyXt6g3PnUIUM2iIgD8Uw48xX37wEFfKdk2l7I1TRiNb0U0ufSJMJR5311GUqCoBlylbhlPx5Q==) seems to be corrupted. Trying again.
+[16:16:27.820] npm error code EINTEGRITY
+[16:16:27.820] npm error sha512-ARxJHU9zcnOBiyXt6g3PnUIUM2iIgD8Uw48xX37wEFfKdk2l7I1TRiNb0U0ufSJMJR5311GUqCoBlylbhlPx5Q== integrity checksum failed when using sha512: wanted sha512-ARxJHU9zcnOBiyXt6g3PnUIUM2iIgD8Uw48xX37wEFfKdk2l7I1TRiNb0U0ufSJMJR5311GUqCoBlylbhlPx5Q== but got sha512-1VoYFnNIxLne3Q//jPyKLeOkegZwnl/jQ2mi84/qWWJsIdVnuLmM+FfZuhZ3MZLfbEj+dC40KrR8d4gVy/jDyA==. (4096 bytes)
+[16:16:27.821] npm error A complete log of this run can be found in: /vercel/.npm/_logs/2025-07-11T07_16_26_738Z-debug-0.log
+[16:16:27.855] Error: Command "npm install --production=false" exited with 1
+[16:16:28.077] 
+[16:16:31.123] Exiting build container
