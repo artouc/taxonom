@@ -1,8 +1,8 @@
 {
     "name": "@osaxyz/taxonom",
-    "version": "0.2.5",
+    "version": "1.0.0",
     "type": "module",
-    "description": "高速なマークダウンパーサー for Vue.js",
+    "description": "Markdown構文を任意のHTMLに変換することができる、ヘッドレス・Markdownパーサーのnpmパッケージです。",
     "main": "dist/index.esm.js",
     "module": "dist/index.esm.js",
     "exports": {
@@ -31,8 +31,8 @@
         "nuxt",
         "headless"
     ],
-    "author": "大内あら生 (Ouchi Arata) <support@osa.xyz>",
-    "license": "SEE LICENSE IN LICENSE",
+    "author": "Original SIN Architecture",
+    "license": "MIT",
     "repository": {
         "type": "git",
         "url": "https://github.com/artouc/taxonom.git",

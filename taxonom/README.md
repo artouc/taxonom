@@ -4,7 +4,7 @@
 
 [![npm version](https://badge.fury.io/js/@osaxyz%2Ftaxonom.svg)](https://badge.fury.io/js/@osaxyz%2Ftaxonom)
 [![npm downloads](https://img.shields.io/npm/dm/@osaxyz/taxonom.svg)](https://www.npmjs.com/package/@osaxyz/taxonom)
-[![License: Custom](https://img.shields.io/badge/License-@osaxyz%20Custom-blue.svg)](./LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
 ## 概要
 
@@ -565,11 +565,9 @@ const result: ParseResult = Taxonom.parseWithMetadata(markdown, options)
 
 ## ライセンス
 
-**@osaxyz カスタムライセンス** - 詳細は [LICENSE](LICENSE) ファイルを参照
+**MIT License** - 詳細は [LICENSE](LICENSE) ファイルを参照
 
 ## 関連パッケージ
 
 - [@osaxyz/taxonom-style](https://www.npmjs.com/package/@osaxyz/taxonom-style) - デフォルトスタイルパッケージ
 - [highlight.js](https://www.npmjs.com/package/highlight.js) - シンタックスハイライト（内部依存）
-
-Made with ❤️ by [大内あら生 (Ouchi Arata)](https://osa.xyz)

@@ -3,7 +3,7 @@
 高速なマークダウンパーサー for Vue.js / Nuxt.js
 
 [![npm version](https://badge.fury.io/js/@osaxyz%2Ftaxonom.svg)](https://badge.fury.io/js/@osaxyz%2Ftaxonom)
-[![License: Custom](https://img.shields.io/badge/License-@osaxyz%20Custom-blue.svg)](./LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
 ## 概要
 
@@ -275,23 +275,6 @@ taxonom/
     └── history/                   # 開発履歴
 ```
 
-## ロードマップ
-
-### 実装済み ✅
-- [x] 基本マークダウン記法（見出し、太字、斜体、コード）
-- [x] リスト機能（ul/ol/li）
-- [x] リンク・画像・ブロッククォート
-- [x] シンタックスハイライト（highlight.js統合）
-- [x] data-taxonom属性システム
-- [x] NPMパッケージ公開
-
-### 予定 🚧
-- [ ] テーブル機能（table/thead/tbody/tr/th/td）
-- [ ] ネストしたリスト対応
-- [ ] カスタムレンダラー機能
-- [ ] パフォーマンス最適化
-- [ ] プラグインシステム
-
 ## 貢献
 
 プルリクエストや Issue を歓迎します！
@@ -304,23 +287,7 @@ taxonom/
 
 ## ライセンス
 
-**@osaxyz カスタムライセンス** - 詳細は [LICENSE](LICENSE) ファイルを参照
-
-### 利用に関する重要な注意事項
-
-**非営利利用の場合:**
-- インストール・使用・改変: ✅ 許可
-- 再配布: ❌ 禁止
-
-**営利利用の場合:**
-- 事前に著作権者（大内あら生）への許可取得が必要です
-- 許可条件には使用料の支払いも含まれる場合があります
-
-**著作権者の権利:**
-- 本ソフトウェアが組み込まれたプロダクトについて、著作権者はいつでも利用の差し止めを要求する権利を有します
-- 利用者は差し止め要求に72時間以内に応じる義務があります
-
-営利利用に関するお問い合わせ: support@osa.xyz
+**MIT License** - 詳細は [LICENSE](LICENSE) ファイルを参照
 
 ## 関連リンク
 
@@ -328,7 +295,3 @@ taxonom/
 - [NPM: @osaxyz/taxonom-style](https://www.npmjs.com/package/@osaxyz/taxonom-style)
 - [ライブデモ](https://taxonom.osa.xyz)
 - [highlight.js](https://highlightjs.org/)
-
----
-
-Made with ❤️ by [大内あら生 (Ouchi Arata)](https://osa.xyz)

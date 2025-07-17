@@ -1,7 +1,7 @@
 {
     "name": "@osaxyz/taxonom-style",
-    "version": "0.2.5",
-    "description": "デフォルトスタイル for @osaxyz/taxonom",
+    "version": "1.0.0",
+    "description": "@osaxyz/taxonom に対するデフォルトスタイルのnpmパッケージです。",
     "main": "dist/index.css",
     "exports": {
         ".": "./dist/index.css"
@@ -21,8 +21,8 @@
         "taxonom",
         "markdown"
     ],
-    "author": "大内あら生 (Ouchi Arata) <support@osa.xyz>",
-    "license": "SEE LICENSE IN LICENSE",
+    "author": "Original SIN Architecture",
+    "license": "MIT",
     "repository": {
         "type": "git",
         "url": "https://github.com/artouc/taxonom.git",
@@ -36,7 +36,7 @@
         "sass": "^1.69.5"
     },
     "peerDependencies": {
-        "@osaxyz/taxonom": "^0.2.5"
+        "@osaxyz/taxonom": "^1.0.0"
     },
     "engines": {
         "node": ">=16"

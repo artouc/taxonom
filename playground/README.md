@@ -228,7 +228,7 @@ npm run typecheck
 
 ## ライセンス
 
-MIT License
+**MIT License** - 詳細は [LICENSE](../LICENSE) ファイルを参照
 
 ## 関連リンク
 
@@ -236,7 +236,3 @@ MIT License
 - [@osaxyz/taxonom](https://www.npmjs.com/package/@osaxyz/taxonom)
 - [@osaxyz/taxonom-style](https://www.npmjs.com/package/@osaxyz/taxonom-style)
 - [ライブデモ](https://taxonom.osa.xyz)
-
----
-
-Made with ❤️ by [OSA](https://osa.xyz)

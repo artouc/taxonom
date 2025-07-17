@@ -233,8 +233,4 @@ const content = computed(() => {
 
 ## ライセンス
 
-**@osaxyz カスタムライセンス** - 詳細は [LICENSE](LICENSE) ファイルを参照
-
----
-
-Made with ❤️ by [大内あら生 (Ouchi Arata)](https://osa.xyz)
+**MIT License** - 詳細は [LICENSE](LICENSE) ファイルを参照
