@@ -41,7 +41,11 @@ const config = ref<TaxonomConfig>({
     blockquote: 'blockquote',
     list: 'ul',
     orderedList: 'ol',
-    listItem: 'li'
+    listItem: 'li',
+    table: 'table',
+    tableRow: 'tr',
+    tableHeader: 'th',
+    tableCell: 'td',
 })
 
 // 計算プロパティ
@@ -91,7 +95,11 @@ const resetConfig = (): void => {
         blockquote: 'blockquote',
         list: 'ul',
         orderedList: 'ol',
-        listItem: 'li'
+        listItem: 'li',
+        table: 'table',
+        tableRow: 'tr',
+        tableHeader: 'th',
+        tableCell: 'td'
     }
 }
 

@@ -91,6 +91,26 @@ class TaxonomParser {
                 continue
             }
 
+            // テーブルの処理
+            // テーブルヘッダーの検出（パイプで区切られた行）
+            if (line.includes('|') && i + 1 < lines.length && lines[i + 1].match(/^\|?[\s\-:|]+\|[\s\-:|]+\|?$/)) {
+                const tableLines: string[] = [line, lines[i + 1]]
+                i += 2
+                
+                // テーブルボディの読み取り
+                while (i < lines.length && lines[i].includes('|')) {
+                    tableLines.push(lines[i])
+                    i++
+                }
+                i-- // 最後のインクリメントを戻す
+                
+                tokens.push({
+                    type: 'table',
+                    content: tableLines.join('\n')
+                })
+                continue
+            }
+
             // 水平線の処理
             if (line.match(/^---+$/)) {
                 tokens.push({
@@ -202,6 +222,9 @@ class TaxonomParser {
                     ).join('\n') || ''
                     return `<${listTag} ${listDataAttr}>\n${listItems}\n</${listTag}>`
                 
+                case 'table':
+                    return this.parseTable(token.content)
+                
                 case 'paragraph':
                     return `<p data-taxonom-p>${this.processInlineElements(token.content)}</p>`
                 
@@ -259,6 +282,49 @@ class TaxonomParser {
         }
         
         return text.replace(/[&<>"']/g, char => htmlEscapes[char])
+    }
+
+    // NOTE: テーブルをパース
+    private parseTable(tableContent: string): string {
+        const lines = tableContent.split('\n')
+        if (lines.length < 2) return ''
+        
+        // ヘッダー行を取得（前後のパイプを除去してから分割）
+        const headerLine = lines[0].replace(/^\||\|$/g, '')
+        const headers = headerLine.split('|').map(h => h.trim())
+        
+        // セパレーター行（2行目）をスキップ
+        
+        // テーブルHTML生成
+        let html = `<${this.config.table} data-taxonom-table>\n`
+        
+        // ヘッダー
+        html += `<thead data-taxonom-thead>\n<${this.config.tableRow} data-taxonom-tr>\n`
+        headers.forEach(header => {
+            html += `<${this.config.tableHeader} data-taxonom-th>${this.processInlineElements(header)}</${this.config.tableHeader}>\n`
+        })
+        html += `</${this.config.tableRow}>\n</thead>\n`
+        
+        // ボディ
+        if (lines.length > 2) {
+            html += `<tbody data-taxonom-tbody>\n`
+            for (let i = 2; i < lines.length; i++) {
+                // 前後のパイプを除去してから分割
+                const rowLine = lines[i].replace(/^\||\|$/g, '')
+                const cells = rowLine.split('|').map(c => c.trim())
+                if (cells.length > 0 && cells[0] !== '') {
+                    html += `<${this.config.tableRow} data-taxonom-tr>\n`
+                    cells.forEach(cell => {
+                        html += `<${this.config.tableCell} data-taxonom-td>${this.processInlineElements(cell)}</${this.config.tableCell}>\n`
+                    })
+                    html += `</${this.config.tableRow}>\n`
+                }
+            }
+            html += `</tbody>\n`
+        }
+        
+        html += `</${this.config.table}>`
+        return html
     }
 
     // NOTE: コードのシンタックスハイライト処理
